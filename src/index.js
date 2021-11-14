@@ -1,0 +1,5 @@
+import template from './index.hbs'
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.innerHTML = template({firstName: 'pupa', lastName: 'lupa'})
+})
