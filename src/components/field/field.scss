@@ -1,5 +1,5 @@
-$primary: #3369F3;
-$gray: #999999;
+@import 'src/styles/variables';
+
 .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -12,19 +12,19 @@ $gray: #999999;
     border: 0;
     border-bottom: 2px solid $primary;
     outline: 0;
-    font-size: 1.3rem;
+    font-size: $fontSizeL;
     padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;
-    font-family: system-ui;
+    background: $transparent;
+    transition: border-color $commonTransitionDuration;
+    font-family: $fontFamily;
     font-style: normal;
 
 &::placeholder {
-     color: transparent;
+     color: $transparent;
  }
 
 &:placeholder-shown ~ .form__label {
-     font-size: 1.3rem;
+     font-size: $fontSizeL;
      cursor: text;
      top: 20px;
  }
@@ -34,7 +34,7 @@ $gray: #999999;
     position: absolute;
     top: 0;
     display: block;
-    transition: 0.2s;
+    transition: $commonTransitionDuration;
     font-size: 1rem;
     color: $gray;
 }
@@ -44,7 +44,7 @@ $gray: #999999;
     position: absolute;
     top: 0;
     display: block;
-    transition: 0.2s;
+    transition: $commonTransitionDuration;
     font-size: 1rem;
     color: $gray;
 }

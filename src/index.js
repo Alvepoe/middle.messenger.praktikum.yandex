@@ -1,6 +1,6 @@
-import template from './components/field/field.hbs'
-import './components/field/field.scss'
+import template from './components/link/link.hbs'
+import './components/link/link.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.innerHTML = template({field: {type: 'text', name: 'name', label: 'label', placeholder: 'placeholder'}})
+    document.body.innerHTML = template({link: {linkUrl: '#', linkText: 'Link'}})
 })
