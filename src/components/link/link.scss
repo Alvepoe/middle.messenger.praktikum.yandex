@@ -1,12 +1,21 @@
-@import 'src/styles/variables';
+@import "src/styles/variables";
 
 .link {
   padding: 0;
   font-family: $fontFamily;
-  font-size: $fontSizeL;
-  color: $primary;
+  font-size: $fontSizeM;
+  color: $primaryColor;
   text-decoration: none;
   background: $transparent;
   border: none;
   cursor: pointer;
+}
+
+.link:hover {
+  color: $primaryColorHover;
+}
+
+.link:focus,
+.link:active {
+  color: $primaryColorActive;
 }
