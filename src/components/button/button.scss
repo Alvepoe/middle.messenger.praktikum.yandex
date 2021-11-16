@@ -1,0 +1,22 @@
+@import "src/styles/variables";
+
+.button {
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid $transparent;
+  color: $white;
+  background-color: $primaryColor;
+  cursor: pointer;
+  transition: $commonTransitionDuration;
+}
+
+.button:hover {
+  background-color: $primaryColorHover;
+}
+
+.button:active,
+.button:focus {
+  background-color: $primaryColorActive;
+}
