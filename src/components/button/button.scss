@@ -10,6 +10,8 @@
   background-color: $primaryColor;
   cursor: pointer;
   transition: $commonTransitionDuration;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .button:hover {

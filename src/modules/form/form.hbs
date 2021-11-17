@@ -9,14 +9,12 @@
                 {{legendText}}
             </legend>
 
-            <div>
-                {{#each fields}}
-                    {{>field}}
-                {{/each}}
-            </div>
+            {{#each fields}}
+                {{>field}}
+            {{/each}}
         </fieldset>
 
-        {{>button}}
+        <div class="form__controls">{{>button}}</div>
     </form>
-    {{>link}}
+    <div class="form__controls"> {{>link}}</div>
 </div>
