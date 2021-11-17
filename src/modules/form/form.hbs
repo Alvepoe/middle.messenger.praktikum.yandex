@@ -1,0 +1,22 @@
+<div class="form__container">
+    <form
+            action=""
+            method="POST"
+            class="form"
+    >
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">
+                {{legendText}}
+            </legend>
+
+            <div>
+                {{#each fields}}
+                    {{>field}}
+                {{/each}}
+            </div>
+        </fieldset>
+
+        {{>button}}
+    </form>
+    {{>link}}
+</div>

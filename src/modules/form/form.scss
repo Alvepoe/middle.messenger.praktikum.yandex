@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+
+.form {
+  margin-bottom: 10px;
+}
+
+.form__fieldset {
+  position: relative;
+  margin-bottom: 100px;
+  border:0;
+  box-shadow: none;
+}
+
+.form__legend {
+  margin-bottom: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: $fontSizeL;
+}
+
+.form__container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  padding: 50px 30px 30px;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
