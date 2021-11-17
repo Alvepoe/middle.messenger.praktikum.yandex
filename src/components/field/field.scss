@@ -1,57 +1,64 @@
-@import 'src/styles/variables';
+@import "src/styles/variables";
 
 .form__group {
-    position: relative;
-    padding: 15px 0 0;
-    margin-top: 10px;
-    width: 50%;
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
 }
 
 .form__field {
-    width: 100%;
-    border: 0;
-    border-bottom: 2px solid $primary;
-    outline: 0;
-    font-size: $fontSizeL;
-    padding: 7px 0;
-    background: $transparent;
-    transition: border-color $commonTransitionDuration;
-    font-family: $fontFamily;
-    font-style: normal;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $primaryColor;
+  outline: 0;
+  font-size: $fontSizeM;
+  padding: 7px 0;
+  background: $transparent;
+  transition: border-color $commonTransitionDuration;
+  font-family: $fontFamily;
+  font-style: normal;
 
-&::placeholder {
-     color: $transparent;
- }
+  &::placeholder {
+    color: $transparent;
+  }
 
-&:placeholder-shown ~ .form__label {
-     font-size: $fontSizeL;
-     cursor: text;
-     top: 20px;
- }
+  &:placeholder-shown ~ .form__label {
+    font-size: $fontSizeM;
+    cursor: text;
+    top: 20px;
+  }
 }
 
 .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: $commonTransitionDuration;
-    font-size: 1rem;
-    color: $gray;
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: $commonTransitionDuration;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.field__error {
+  color: #ff2f2f;
 }
 
 .form__field:focus {
-~ .form__label {
+  ~ .form__label {
     position: absolute;
     top: 0;
     display: block;
     transition: $commonTransitionDuration;
     font-size: 1rem;
     color: $gray;
-}
-padding-bottom: 6px;
-border-width: 3px;
+  }
+  padding-bottom: 6px;
+  border-width: 3px;
 }
 /* reset input */
-.form__field{
-&:required,&:invalid { box-shadow:none; }
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
 }
