@@ -1,5 +1,31 @@
-<main class="main">
-    <section class="section">
-        {{> form }}
-    </section>
-</main>
+{{#getConfig '
+{
+    "legendText": "Вход",
+    "button": {
+      "type": "button",
+      "label": "Авторизоваться"
+    },
+    "fields": [
+      {
+        "field": {
+          "type": "text",
+          "name": "Логин",
+          "label": "Логин"
+        }
+      },
+      {
+        "field": {
+          "type": "password",
+          "name": "Пароль",
+          "label": "Пароль"
+        }
+      }
+    ],
+    "link": {
+      "linkUrl": "#",
+      "linkText": "Нет аккаунта?"
+    }
+}
+'}}
+    {{> page options = getConfig}}
+{{/getConfig}}
