@@ -1,0 +1,66 @@
+{{#getConfig '
+{
+    "legendText": "Регистрация",
+    "button": {
+      "type": "button",
+      "label": "Зарегистрироваться"
+    },
+    "fields": [
+      {
+        "field": {
+          "type": "text",
+          "label": "Почта",
+          "placeholder": "Почта"
+        }
+      },
+      {
+        "field": {
+          "type": "text",
+          "label": "Логин",
+          "placeholder": "Логин"
+        }
+      },
+      {
+        "field": {
+          "type": "text",
+          "label": "Имя",
+          "placeholder": "Имя"
+        }
+      },
+      {
+        "field": {
+          "type": "text",
+          "label": "Фамилия",
+          "placeholder": "Фамилия"
+        }
+      },
+      {
+        "field": {
+          "type": "tel",
+          "label": "Телефон",
+          "placeholder": "Телефон"
+        }
+      },
+      {
+        "field": {
+          "type": "password",
+          "label": "Пароль",
+          "placeholder": "Пароль"
+        }
+      },
+      {
+        "field": {
+          "type": "password",
+          "label": "Пароль (ещё раз)",
+          "placeholder": "Пароль (ещё раз)"
+        }
+      }
+    ],
+    "link": {
+      "linkUrl": "../login.hbs",
+      "linkText": "Войти"
+    }
+}
+'}}
+    {{> page options = getConfig}}
+{{/getConfig}}
