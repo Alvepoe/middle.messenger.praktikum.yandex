@@ -1,0 +1,14 @@
+{{#getConfig '
+{
+  "error": {
+    "title": "404",
+    "description": "Не туда попали"
+  },
+  "link": {
+    "linkUrl": "#",
+    "linkText": "Войти"
+  }
+}
+'}}
+    {{> page options = getConfig}}
+{{/getConfig}}
