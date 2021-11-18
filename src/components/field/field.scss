@@ -16,7 +16,6 @@
   padding: 7px 0;
   background: $transparent;
   transition: border-color $commonTransitionDuration;
-  font-family: $fontFamily;
   font-style: normal;
 
   &::placeholder {
@@ -40,7 +39,7 @@
 }
 
 .field__error {
-  color: #ff2f2f;
+  color: $red;
 }
 
 .form__field:focus {
@@ -49,7 +48,7 @@
     top: 0;
     display: block;
     transition: $commonTransitionDuration;
-    font-size: 1rem;
+    font-size: $fontSizeS;
     color: $gray;
   }
   padding-bottom: 6px;

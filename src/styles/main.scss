@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: $fontFamily;
+}
+
+.main {
+  height: 100%;
+}
+
+.section {
+  @include positionCenter
+}
+
+a {
+  text-decoration: none;
+}

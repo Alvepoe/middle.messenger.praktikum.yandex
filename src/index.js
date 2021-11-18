@@ -1,20 +1,34 @@
-import './modules/form/form'
+import './pages/login/login'
 import template from "./index.hbs";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.innerHTML = template({
-    legendText: 'legend',
-    button: {type: 'button', label: 'label'},
-    fields: [{field: {
-      type: "text",
-      name: "name",
-      label: "label",
-      placeholder: "placeholder",
-      error: "error",
-    }}],
-    link: {
-      linkUrl: '#',
-      linkText: 'Link'
+    config:  {
+        legendText: 'Вход',
+        button: {
+            type: 'button',
+            label: 'Авторизоваться'
+        },
+        fields: [
+            {
+                field: {
+                    type: "text",
+                    name: "Логин",
+                    label: "Логин",
+                }
+            },
+            {
+                field: {
+                    type: "password",
+                    name: "Пароль",
+                    label: "Пароль",
+                }
+            }
+        ],
+        link: {
+          linkUrl: '#',
+          linkText: 'Нет аккаунта?'
+         }
     }
   });
 });
