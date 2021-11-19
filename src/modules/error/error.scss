@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+
+.error {
+  margin-bottom: 69px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error__title {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  font-size: $fontSizeXL;
+}
+
+.error__description {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-size: $fontSizeL;
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

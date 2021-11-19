@@ -1,6 +1,6 @@
 import Handlebars from "handlebars/dist/handlebars.runtime";
 import '../../components/form/form'
-import '../../components/error/error'
+import '../error/error'
 import template from "./auth.hbs";
 
 Handlebars.registerPartial("page", template);
