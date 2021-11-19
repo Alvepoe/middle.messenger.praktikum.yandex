@@ -1,7 +1,7 @@
 import Handlebars from "handlebars/dist/handlebars.runtime";
-import "../../components/field/field";
-import "../../components/button/button";
-import "../../components/link/link";
+import "../field/field";
+import "../button/button";
+import "../link/link";
 import template from "./form.hbs";
 import "./form.scss";
 
