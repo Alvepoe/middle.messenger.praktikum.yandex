@@ -15,7 +15,8 @@
 }
 
 .section {
-  @include positionCenter
+  @include positionCenter;
+  display: flex;
 }
 
 .form__container {

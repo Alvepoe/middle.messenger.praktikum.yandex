@@ -1,10 +1,14 @@
 {{#getConfig '
 {
     "legendText": "Вход",
-    "button": {
-      "type": "button",
-      "label": "Авторизоваться"
-    },
+    "buttons": [
+      {
+        "button": {
+          "type": "button",
+          "label": "Авторизоваться"
+        }
+      }
+    ],
     "fields": [
       {
         "field": {
@@ -23,10 +27,14 @@
         }
       }
     ],
-    "link": {
-      "linkUrl": "../../registration.hbs",
-      "linkText": "Нет аккаунта?"
-    }
+    "links": [
+        {
+          "link": {
+              "linkUrl": "../../registration.hbs",
+              "linkText": "Нет аккаунта?"
+          }
+        }
+    ]
 }
 '}}
     {{> auth options = getConfig}}

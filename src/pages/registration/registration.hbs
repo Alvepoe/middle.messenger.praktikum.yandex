@@ -1,10 +1,14 @@
 {{#getConfig '
 {
     "legendText": "Регистрация",
-    "button": {
-      "type": "button",
-      "label": "Зарегистрироваться"
-    },
+    "buttons": [
+      {
+        "button": {
+          "type": "button",
+          "label": "Зарегистрироваться"
+        }
+      }
+    ],
     "fields": [
       {
         "field": {
@@ -63,10 +67,14 @@
         }
       }
     ],
-    "link": {
-      "linkUrl": "../login.hbs",
-      "linkText": "Войти"
-    }
+    "links": [
+        {
+          "link": {
+              "linkUrl": "#",
+              "linkText": "Войти"
+          }
+        }
+    ]
 }
 '}}
     {{> auth options = getConfig}}

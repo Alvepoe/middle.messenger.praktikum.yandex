@@ -11,4 +11,9 @@
 
 .profile__form-container {
   width: calc((100% / 12) * 11);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
