@@ -6,6 +6,8 @@
 *::after {
   box-sizing: border-box;
   font-family: $fontFamily;
+  padding: 0;
+  margin: 0;
 }
 
 .main {
@@ -14,6 +16,18 @@
 
 .section {
   @include positionCenter
+}
+
+.form__container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  padding: 50px 30px 30px;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 a {

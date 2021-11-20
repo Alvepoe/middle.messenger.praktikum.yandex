@@ -1,0 +1,14 @@
+@import "src/styles/variables";
+
+.profile__sidebar {
+  height: 100vh;
+  width: calc((100% / 12) * 1);
+  border-right: 1px solid $sidebarBorder;
+  border-left: 1px solid $sidebarBorder;
+
+  background-color: $sidebarBackground;
+}
+
+.profile__form-container {
+  width: calc((100% / 12) * 11);
+}

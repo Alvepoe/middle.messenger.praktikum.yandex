@@ -3,6 +3,6 @@ import '../../components/form/form'
 import '../error/error'
 import template from "./auth.hbs";
 
-Handlebars.registerPartial("page", template);
+Handlebars.registerPartial("auth", template);
 
 
