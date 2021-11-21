@@ -8,9 +8,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node ./server.js",
-    "start:parcel": "parcel static/index.html",
-    "build": "parcel build static/index.html"
+    "start": "parcel build ./static/index.html && node ./server.js",
+    "start:parcel": "parcel ./static/index.html",
+    "build": "parcel build ./static/index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
