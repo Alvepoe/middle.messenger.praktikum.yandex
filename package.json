@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "parcel build static/index.html && node ./server.js",
     "start:parcel": "parcel static/index.html",
     "build": "parcel build static/index.html"
   },
