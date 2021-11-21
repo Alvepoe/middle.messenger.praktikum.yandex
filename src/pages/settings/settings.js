@@ -1,8 +1,9 @@
 import Handlebars from "handlebars/dist/handlebars.runtime";
 import '../../helpers/getConfigHelper'
-import template from "./500.hbs";
+import '../../modules/profile/profile'
+import template from "./settings.hbs";
 
-Handlebars.registerPartial("error500", template);
+Handlebars.registerPartial("profileSettings", template);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.innerHTML = template();
