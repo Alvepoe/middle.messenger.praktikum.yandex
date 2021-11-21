@@ -7,6 +7,7 @@
   text-align: center;
   border-radius: 50%;
   position: relative;
+  margin-bottom: 70px;
 }
 
 .avatar__background {
@@ -28,10 +29,12 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
+  color: $white;
   top: 0;
   opacity: 0;
   position: absolute;
   transition: $commonTransitionDuration ease-in-out;
   background-color: $gray;
   z-index: 100;
+  cursor: pointer;
 }

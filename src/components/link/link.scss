@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.link_color_red {
+  color: $red;
+}
+
 .link:hover {
   color: $primaryColorHover;
 }

@@ -9,16 +9,29 @@
                 {{legendText}}
             </legend>
 
-            {{#each fields}}
-                {{>field}}
-            {{/each}}
+            {{#if fields}}
+                {{#each fields}}
+                    {{>field}}
+                {{/each}}
+            {{/if}}
+
+            {{#if profileFields}}
+                <ul class="profile__list">
+                    {{#each profileFields}}
+                    <li class="profile__list-item">
+                        {{>profileField}}
+                    </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+
         </fieldset>
 
         {{#each buttons}}
-            <div class="form__controls {{formButtonsClassName}}">{{>button}}</div>
+            <div class="form__controls">{{>button}}</div>
         {{/each}}
     </form>
     {{#each links}}
-        <div class="form__controls {{formLinksClassName}}">{{>link}}</div>
+        <div class="form__controls">{{>link}}</div>
     {{/each}}
 </div>

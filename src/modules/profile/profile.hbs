@@ -5,7 +5,14 @@
         </aside>
         <div class="profile__form-container">
             {{> avatar }}
-            {{> form}}
+            {{userInfo.firstName}}
+
+            {{> form formConfig}}
+            <ul class="profile__list">
+                {{#each profileLinks}}
+                    <li class="profile__list-item profile__list-item_margin">{{>link}}</li>
+                {{/each}}
+             </ul>
         </div>
     </section>
 </main>
