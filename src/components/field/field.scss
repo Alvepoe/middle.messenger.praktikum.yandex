@@ -1,0 +1,63 @@
+@import "src/styles/variables";
+
+.form__field-wrapper {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $primaryColor;
+  outline: 0;
+  font-size: $fontSizeM;
+  padding: 7px 0;
+  background: $transparent;
+  transition: border-color $commonTransitionDuration;
+  font-style: normal;
+
+  &::placeholder {
+    color: $transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: $fontSizeM;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: $commonTransitionDuration;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.field__error {
+  color: $red;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: $commonTransitionDuration;
+    font-size: $fontSizeS;
+    color: $gray;
+  }
+  padding-bottom: 6px;
+  border-width: 3px;
+}
+/* reset input */
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}

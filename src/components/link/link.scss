@@ -1,0 +1,23 @@
+@import "src/styles/variables";
+
+.link {
+  padding: 0;
+  font-size: $fontSizeM;
+  color: $primaryColor;
+  background: $transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.link_color_red {
+  color: $red;
+}
+
+.link:hover {
+  color: $primaryColorHover;
+}
+
+.link:focus,
+.link:active {
+  color: $primaryColorActive;
+}

@@ -1,0 +1,41 @@
+{{#getConfig '
+{
+    "legendText": "Вход",
+    "buttons": [
+      {
+        "button": {
+          "type": "button",
+          "label": "Авторизоваться"
+        }
+      }
+    ],
+    "fields": [
+      {
+        "field": {
+          "type": "text",
+          "label": "Логин",
+          "placeholder": "Логин",
+          "name": "login"
+        }
+      },
+      {
+        "field": {
+          "type": "password",
+          "label": "Пароль",
+          "placeholder": "Пароль",
+          "name": "password"
+        }
+      }
+    ],
+    "links": [
+        {
+          "link": {
+              "linkUrl": "#",
+              "linkText": "Нет аккаунта?"
+          }
+        }
+    ]
+}
+'}}
+    {{> auth options = getConfig}}
+{{/getConfig}}

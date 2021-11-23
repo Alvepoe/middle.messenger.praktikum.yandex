@@ -1,0 +1,29 @@
+@import "src/styles/variables";
+
+.form {
+  margin-bottom: 10px;
+}
+
+.form__fieldset {
+  position: relative;
+  margin-bottom: 100px;
+  border:0;
+  box-shadow: none;
+}
+
+.form__legend {
+  margin-bottom: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: $fontSizeL;
+}
+
+.form__controls {
+  display: flex;
+  justify-content: center;
+}
+
+.form__controls_margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

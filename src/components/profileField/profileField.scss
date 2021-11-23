@@ -1,0 +1,22 @@
+@import "src/styles/variables";
+
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.profile-field__input {
+  width: 200px;
+  height: 30px;
+  border: none;
+  font-size: $fontSizeM;
+  color: #999999;
+  text-align: right;
+}
+
+.profile-field__label {
+  font-size: $fontSizeM;
+}

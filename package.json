@@ -1,0 +1,25 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "source": "static/index.html",
+  "repository": "https://github.com/Alvepoe/middle.messenger.praktikum.yandex.git",
+  "author": "agorbunova",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon ./server.js",
+    "start:parcel": "parcel ./static/index.html",
+    "build": "parcel build ./static/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "sass": "^1.43.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.15"
+  }
+}

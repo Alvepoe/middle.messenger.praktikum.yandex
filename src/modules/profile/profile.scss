@@ -1,0 +1,43 @@
+@import "src/styles/variables";
+
+.profile__sidebar {
+  height: 100vh;
+  width: calc((100% / 12) * 1);
+  border-right: 1px solid $sidebarBorder;
+  border-left: 1px solid $sidebarBorder;
+
+  background-color: $sidebarBackground;
+}
+
+.profile__list {
+  width: 510px;
+  list-style-type: none;
+}
+
+.profile__list + .profile__list {
+  margin-top: 60px;
+}
+
+.profile__list-item {
+  border-bottom-color: $lightGray;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.profile__list-item_margin {
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+
+.profile__list-item:last-child {
+  border-bottom-color: $transparent;
+}
+
+.profile__form-container {
+  width: calc((100% / 12) * 11);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
