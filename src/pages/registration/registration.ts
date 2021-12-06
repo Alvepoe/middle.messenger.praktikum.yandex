@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars/dist/handlebars.runtime';
-import '../../helpers/getConfigHelper';
-import template from './login.hbs';
+import '../../helpers/getConfigHelper.ts';
+import template from './registration.hbs';
 
-Handlebars.registerPartial('login', template);
+Handlebars.registerPartial('registration', template);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.innerHTML = template();

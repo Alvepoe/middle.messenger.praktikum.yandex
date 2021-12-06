@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars/dist/handlebars.runtime';
-import '../field/field';
-import '../profileField/profileField';
-import '../button/button';
-import '../link/link';
+import '../field/field.ts';
+import '../profileField/profileField.ts';
+import '../button/button.ts';
+import '../link/link.ts';
 import template from './form.hbs';
 import './form.scss';
 
