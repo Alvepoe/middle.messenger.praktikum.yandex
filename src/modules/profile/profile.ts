@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
+import * as Handlebars from 'handlebars';
 import '../../components/sidebarLink/sidebarLink.ts';
 import '../../components/avatar/avatar.ts';
 import template from './profile.hbs';

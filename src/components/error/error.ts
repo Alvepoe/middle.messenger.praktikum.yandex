@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
+import * as Handlebars from 'handlebars';
 import template from './error.hbs';
 import './error.scss';
 

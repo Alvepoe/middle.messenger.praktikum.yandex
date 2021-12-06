@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
+import * as Handlebars from 'handlebars';
 import '../../helpers/getConfigHelper.ts';
 import '../../modules/profile/profile.ts';
 import template from './settings.hbs';
