@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars';
+import Handlebars from 'handlebars/dist/handlebars.runtime';
 import '../field/field.ts';
 import '../profileField/profileField.ts';
 import '../button/button.ts';

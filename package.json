@@ -8,12 +8,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "nodemon server.ts",
+    "start": "nodemon server.js",
     "start:parcel": "parcel ./static/index.html",
     "build": "parcel build ./static/index.html"
   },
   "devDependencies": {
-    "@types/handlebars": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "eslint": "^8.2.0",
