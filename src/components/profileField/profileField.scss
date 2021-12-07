@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  outline: $transparent;
   cursor: pointer;
 }
 
@@ -13,7 +13,7 @@
   height: 30px;
   border: none;
   font-size: $fontSizeM;
-  color: #999999;
+  color: $gray;
   text-align: right;
 }
 

@@ -11,13 +11,12 @@
   width: 100%;
   border: 0;
   border-bottom: 2px solid $primaryColor;
-  outline: 0;
   font-size: $fontSizeM;
   padding: 7px 0;
   background: $transparent;
   transition: border-color $commonTransitionDuration;
   font-style: normal;
-
+  outline: $transparent;
   &::placeholder {
     color: $transparent;
   }
