@@ -4,7 +4,16 @@
             {{> sidebarLink }}
         </aside>
         <div class="profile__form-container">
-            {{> avatar }}
+            <div class="avatar">
+                {{#if avatar.src}}
+                    {{> avatar}}
+                {{else}}
+                    <div class="avatar__background"></div>
+                {{/if}}
+                <div class="avatar__overlay">
+                    <div>Поменять аватар</div>
+                </div>
+            </div>
             {{userInfo.firstName}}
 
             {{> form formConfig}}
