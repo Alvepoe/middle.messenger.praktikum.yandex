@@ -1,0 +1,14 @@
+<div class="chat-list">
+    <div class="chat-list__header">
+        <a class="chat-list__profile-link">
+            Профиль
+        </a>
+        <input placeholder="Поиск" class="chat-list__input-search">
+    </div>
+    <div class="chat-list__divider"></div>
+    <div class="chat-list__available-chats">
+        {{#each chats}}
+            {{>chatPreview}}
+        {{/each}}
+    </div>
+</div>

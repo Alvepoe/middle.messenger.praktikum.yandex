@@ -1,0 +1,59 @@
+@import "src/styles/variables";
+
+.chat-list__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list__profile-link {
+  margin-bottom: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 30px;
+  color: $gray;
+  text-align: right;
+  font-size: $fontSizeM;
+}
+.chat-list__profile-link:hover {
+  color: $primaryColor;
+}
+
+.chat-list__profile-link:after {
+  display: inline-block;
+  -webkit-transform: scale(0.5, 1); /* Safari and Chrome */
+  -moz-transform: scale(0.5, 1); /* Firefox */
+  -ms-transform: scale(0.5, 1); /* IE 9 */
+  -o-transform: scale(0.5, 1); /* Opera */
+  transform: scale(0.5, 1); /* W3C */
+  content: ">";
+  position: relative;
+  margin-left: 2px;
+}
+
+.chat-list__input-search {
+  margin-bottom: 14px;
+  width: 290px;
+  height: 32px;;
+  border: none;
+  border-radius: 5px;
+  color: $gray;
+  background-color: $lightGray;
+  text-align: center;
+  align-self: center;
+  &::placeholder {
+    background-repeat: no-repeat;
+    background-position: calc(50% - 30px);
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.5924 11.4138C10.1605 12.8457 7.83886 12.8457 6.40694 11.4138C4.97502 9.9819 4.97502 7.6603 6.40694 6.22837C7.83886 4.79645 10.1605 4.79645 11.5924 6.22837C13.0243 7.6603 13.0243 9.9819 11.5924 11.4138ZM12.0328 12.7968C10.0725 14.2962 7.25696 14.1495 5.46413 12.3566C3.51151 10.404 3.51151 7.23819 5.46413 5.28556C7.41675 3.33294 10.5826 3.33294 12.5352 5.28556C14.3279 7.07831 14.4747 9.89373 12.9755 11.8539L16.5423 15.4206L15.5994 16.3635L12.0328 12.7968Z' fill='inherit'/%3E%3C/svg%3E");
+  }
+  &:focus {
+    outline-color: $gray;
+    &::placeholder {
+      color: $transparent;
+      background-image: none;
+    }
+  }
+}
+
+
+
