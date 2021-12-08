@@ -1,0 +1,21 @@
+<div class="chat-preview">
+    <img src="{{userAvatarSrc}}" class="chat-preview__avatar" alt="avatar">
+    <div class="chat-preview__content">
+        <div class="chat-preview__header">
+            <h4 class="chat-preview__title">
+                {{chatTitle}}
+            </h4>
+            <div class="chat-preview__last-message-time">
+                {{lastMessageTime}}
+            </div>
+        </div>
+        <div class="chat-preview__last-message">
+            <div class="chat-preview__last-message-text">
+                {{content}}
+            </div>
+            {{#if unreadCount}}
+                <div class="chat-preview__unreadCount">{{unreadCount}}</div>
+            {{/if}}
+        </div>
+    </div>
+</div>
