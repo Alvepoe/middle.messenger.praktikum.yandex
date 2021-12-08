@@ -3,6 +3,8 @@
 .chat-list__header {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid $lightGray;
+  margin-bottom: 10px;
 }
 
 .chat-list__profile-link {
