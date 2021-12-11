@@ -1,0 +1,14 @@
+@import "src/styles/variables";
+
+.messenger__sidebar {
+  height: 100vh;
+  width: calc((100% / 12) * 3);
+  border-right: 1px solid $sidebarBorder;
+  border-left: 1px solid $sidebarBorder;
+
+  background-color: $sidebarBackground;
+}
+
+.messenger__section {
+  justify-content: flex-start;
+}

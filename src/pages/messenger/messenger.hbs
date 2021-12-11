@@ -1,0 +1,66 @@
+{{#getConfig '
+{
+  "chats": [
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    },
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    },
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    },
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    },
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    },
+    {
+      "chatTitle": "chatTitle",
+      "lastMessageTime": "2020-01-02T14:22:22.000Z",
+      "content": "ща аннек расскажу обоссышься",
+      "unreadCount": 15
+    }
+  ],
+  "chat": {
+    "userName": "ёбнутый"
+  },
+  "messages": [
+    {
+      "content": "Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.",
+      "time": "23:40",
+      "className": "companion"
+    },
+    {
+      "content": "Круто!",
+      "time": "23:41",
+      "className": "user"
+    }
+  ]
+}
+'}}
+    <main class="main">
+        <section class="section messenger__section">
+            <aside class="messenger__sidebar">
+                {{> chatList options = getConfig}}
+            </aside>
+             {{> chat options = getConfig }}
+        </section>
+    </main>
+{{/getConfig}}
