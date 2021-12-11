@@ -1,22 +1,7 @@
-import template from './pages/messenger/messenger.hbs';
+import './pages/login/login.ts';
+import './pages/registration/registration.ts';
+import './pages/404/404.ts';
+import './pages/500/500.ts';
+import './pages/settings/settings.ts';
+import './pages/changePassword/changePassword.ts';
 import './pages/messenger/messenger.ts';
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = template({
-    chats: [
-      {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      }, {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      }, {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      }, {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      }, {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      }, {
-        chatTitle: 'chatTitle', lastMessageTime: '2020-01-02T14:22:22.000Z', content: 'ща аннек расскажу обоссышься', unreadCount: 15,
-      },
-    ],
-  });
-});
