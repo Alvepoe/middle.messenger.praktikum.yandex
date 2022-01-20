@@ -2,13 +2,15 @@
   "compilerOptions": {
     "outDir": "dist",
     "typeRoots": ["./src/@types", "./node_modules/@types"],
-    "target": "es2016",
+    "module": "es2020",
+    "target": "es2017",
     "declaration": false,
-    "module": "commonjs",
+    "strictNullChecks": true,
+    "sourceMap": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
 }

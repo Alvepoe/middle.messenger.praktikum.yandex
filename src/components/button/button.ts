@@ -1,5 +1,16 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './button.hbs';
 import './button.scss';
+import Block from "../../modules/Block";
 
-Handlebars.registerPartial('button', template);
+class Button extends Block {
+    render() {
+        return this.compile(template, {
+            ...this.props,
+            type: this.props.type || 'button',
+            label: this.props.label,
+            id: this.id,
+        });
+    }
+}
+
+export default Button;
