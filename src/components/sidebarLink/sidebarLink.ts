@@ -1,5 +1,11 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './sidebarLink.hbs';
 import './sidebarLink.scss';
+import Block from "../../modules/Block";
 
-Handlebars.registerPartial('sidebarLink', template);
+class SidebarLink extends Block {
+    render(): DocumentFragment {
+        return this.compile(template, {})
+    }
+}
+
+export default SidebarLink;

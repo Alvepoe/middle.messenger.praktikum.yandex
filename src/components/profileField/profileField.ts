@@ -1,5 +1,17 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './profileField.hbs';
 import './profileField.scss';
+import Block from "../../modules/Block";
 
-Handlebars.registerPartial('profileField', template);
+class ProfileField extends Block {
+    render() {
+        return this.compile(template, {
+            ...this.props,
+            type: this.props.type,
+            name: this.props.name,
+            label: this.props.label,
+            id: this.id,
+        });
+    }
+}
+
+export default ProfileField;

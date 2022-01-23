@@ -1,5 +1,15 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './link.hbs';
 import './link.scss';
+import Block from "../../modules/Block";
 
-Handlebars.registerPartial('link', template);
+class Link extends Block {
+    render(): DocumentFragment {
+        return this.compile(template, {
+            linUrl: this.props.linUrl,
+            className: this.props.className,
+            linkText: this.props.linkText,
+        })
+    }
+}
+
+export default Link;

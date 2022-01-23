@@ -1,6 +1,15 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './message.hbs';
 import './message.scss';
-import '../sidebarLink/sidebarLink.ts';
+import Block from "../../modules/Block";
 
-Handlebars.registerPartial('message', template);
+class Message extends Block {
+    render(): DocumentFragment {
+        return this.compile(template, {
+            className: this.props.className,
+            content: this.props.content,
+            time: this.props.time,
+        })
+    }
+}
+
+export default Message;

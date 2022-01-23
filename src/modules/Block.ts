@@ -30,7 +30,7 @@ class Block {
      *
      * @returns {void}
      */
-  constructor(tagName = 'div', props = {}) {
+  constructor({ tagName = 'div', props = {}}) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,

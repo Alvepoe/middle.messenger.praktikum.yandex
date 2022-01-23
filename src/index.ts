@@ -1,10 +1,7 @@
-import Button from "./components/button/button";
-
+import SidebarLink from "./components/sidebarLink/sidebarLink";
+import './styles/main.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const button = new Button(undefined,{
-            type: 'button',
-            label: 'qqq'
-    })
-    document.body.appendChild(button.getContent());
+    const field = new SidebarLink({});
+    document.body.appendChild(field.getContent());
 });
