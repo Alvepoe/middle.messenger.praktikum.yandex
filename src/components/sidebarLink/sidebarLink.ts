@@ -4,7 +4,7 @@ import Block from "../../modules/Block";
 
 class SidebarLink extends Block {
     render(): DocumentFragment {
-        return this.compile(template, {})
+        return this.compile(template)
     }
 }
 

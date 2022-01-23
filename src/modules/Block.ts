@@ -107,7 +107,7 @@ class Block {
     this._element.appendChild(block);
   }
 
-  public compile(template: TemplateDelegate, props: Props): DocumentFragment {
+  public compile(template: TemplateDelegate, props?: Props): DocumentFragment {
     const propsAndStubs = { ...props };
 
     const fragment = document.createElement('template');
