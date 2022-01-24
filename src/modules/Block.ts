@@ -2,7 +2,9 @@ import { TemplateDelegate } from 'handlebars';
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
 
-type Props = { [key: string]: any };
+type TProps = { [key: string]: any };
+
+type TChildren = {[key: string]: Block};
 
 class Block {
   static EVENTS = {
@@ -14,11 +16,11 @@ class Block {
 
   private readonly eventBus: EventBus;
 
-  props: Props;
+  props: TProps;
 
   public id: string;
 
-  public children: Block | Block[] = [];
+  public children: TChildren = {};
 
   _element: Element | HTMLElement | DocumentFragment;
 
@@ -76,16 +78,16 @@ class Block {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: Props, newProps: Props): void {
+  _componentDidUpdate(oldProps: TProps, newProps: TProps): void {
     const isUpdated = this.componentDidUpdate(oldProps, newProps);
     if(isUpdated) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+  componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
     return oldProps !== newProps;
   }
 
-  _makePropsProxy(props: Props) {
+  _makePropsProxy(props: TProps) {
     return new Proxy(props, {
       get(target, prop: string) {
         const value = target[prop];
@@ -107,10 +109,12 @@ class Block {
     this._element.appendChild(block);
   }
 
-  public compile(template: TemplateDelegate, props?: Props): DocumentFragment {
+  public compile(template: TemplateDelegate, props?: TProps): DocumentFragment {
     const propsAndStubs = { ...props };
 
     const fragment = document.createElement('template');
+
+
 
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child.id}"></div>`
@@ -131,6 +135,9 @@ class Block {
     return this._element;
   }
 
+  public initChildren(children: TChildren) {
+    this.children = children;
+  }
 
   render() {
     const fragment = document.createElement('template');

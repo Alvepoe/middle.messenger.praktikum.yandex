@@ -1,7 +1,14 @@
-import SidebarLink from "./components/sidebarLink/sidebarLink";
+import Error from "./components/error/error";
 import './styles/main.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const field = new SidebarLink({});
+    const field = new Error({
+        props: {
+            title: "ERROR",
+            description: "SOMETHING WENT WRONG",
+            linkUrl: '#',
+            linkText: 'linkText'
+        }
+    });
     document.body.appendChild(field.getContent());
 });
