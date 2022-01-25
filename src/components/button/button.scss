@@ -18,6 +18,12 @@
   background-color: $primaryColorHover;
 }
 
+.button_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button:active,
 .button:focus {
   background-color: $primaryColorActive;

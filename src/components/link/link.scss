@@ -13,6 +13,12 @@
   color: $red;
 }
 
+.link_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .link:hover {
   color: $primaryColorHover;
 }

@@ -1,6 +1,20 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
-import template from './chatList.hbs';
-import '../chatPreview/chatPreview.ts';
 import './chatList.scss';
+import Block from "../../modules/Block";
+import template from './chatList.hbs';
+import ChatPreview from "../chatPreview/chatPreview";
 
-Handlebars.registerPartial('chatList', template);
+class ChatList extends Block {
+    render(): DocumentFragment {
+        this.initChildren({
+            chatPreviews: this.props.chats.map((chat: {}) => new ChatPreview({
+                props: {
+                    ...chat
+                }
+            }))
+        })
+        return this.compile(template)
+    }
+}
+
+export default ChatList;
+

@@ -1,5 +1,5 @@
-import { TemplateDelegate } from 'handlebars';
-import { v4 as uuidv4 } from 'uuid';
+import {TemplateDelegate} from 'handlebars';
+import {v4 as uuidv4} from 'uuid';
 import EventBus from './EventBus';
 
 type TProps = { [key: string]: any };
@@ -20,22 +20,24 @@ class Block {
 
   public id: string;
 
-  public children: TChildren = {};
-
-  _element: Element | HTMLElement | DocumentFragment;
+  public children: TChildren | TChildren[] = {};
 
   _meta: any = null;
 
+  private _element: HTMLElement;
+
   /** JSDoc
      * @param {string} tagName
+     * @param {string} childrenTagName
      * @param {Object} props
      *
      * @returns {void}
      */
-  constructor({ tagName = 'div', props = {}}) {
+  constructor({ tagName = 'div', childrenTagName = 'div', props = {}}) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
+      childrenTagName,
       props,
     };
 
@@ -104,9 +106,9 @@ class Block {
   }
 
   _render() {
-    const block = this.render();
-
-    this._element.appendChild(block);
+    const fragment = this.render();
+    // @ts-ignore
+    this._element = fragment.firstChild;
   }
 
   public compile(template: TemplateDelegate, props?: TProps): DocumentFragment {
@@ -114,18 +116,34 @@ class Block {
 
     const fragment = document.createElement('template');
 
-
-
     Object.entries(this.children).forEach(([key, child]) => {
-      propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+      if(child) {
+        if (Array.isArray(child)) {
+          child.forEach((item) => {
+            propsAndStubs[key] = `${propsAndStubs[key] ? propsAndStubs[key] : ''} <div data-id="${item.id}"></div>`
+          });
+        } else {
+          propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+        }
+      }
     });
 
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach(child => {
-      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+    Object.values(this.children).forEach((child: Block) => {
 
-      stub?.replaceWith(child.getContent());
+      if(child) {
+        if (Array.isArray(child)) {
+          child.forEach(item => {
+            const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
+            stub?.replaceWith(item.getContent())
+          });
+        } else {
+          const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+          stub?.replaceWith(child.getContent())
+        }
+      }
+
     });
 
     return fragment.content;
