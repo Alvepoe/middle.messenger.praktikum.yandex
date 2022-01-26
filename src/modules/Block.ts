@@ -24,7 +24,7 @@ class Block {
 
   _meta: any = null;
 
-  private _element: HTMLElement;
+  private _element: Element | null;
 
   /** JSDoc
      * @param {string} tagName
@@ -107,8 +107,7 @@ class Block {
 
   _render() {
     const fragment = this.render();
-    // @ts-ignore
-    this._element = fragment.firstChild;
+    this._element = fragment.firstElementChild;
   }
 
   public compile(template: TemplateDelegate, props?: TProps): DocumentFragment {
@@ -130,7 +129,7 @@ class Block {
 
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach((child: Block) => {
+    Object.values(this.children).forEach((child) => {
 
       if(child) {
         if (Array.isArray(child)) {
