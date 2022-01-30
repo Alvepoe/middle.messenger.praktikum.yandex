@@ -7,4 +7,8 @@ const server = express();
 
 server.use('/', express.static(path.join(__dirname, 'dist')));
 
+server.use('*', (req, res) => {
+  res.sendFile(`${__dirname}/dist/index.html`);
+});
+
 server.listen(PORT, () => console.log(`Сервер на ${PORT} порту`));
