@@ -1,13 +1,71 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
-import '../../helpers/getConfigHelper.ts';
-import template from './messenger.hbs';
 import '../../styles/main.scss';
 import './messenger.scss';
-import '../../layouts/chat/chat.ts';
-import '../../components/chatList/chatList.ts';
+import Block from '../../modules/Block';
+import ChatList from '../../components/chatList/chatList';
+import template from './messenger.hbs';
+import Chat from '../../layouts/chat/chat';
 
-Handlebars.registerPartial('messenger', template);
+class Messenger extends Block {
+  render(): DocumentFragment {
+    this.initChildren({
+      chatList: new ChatList({
+        props: {
+          chats: [
+            {
+              chatTitle: 'chatTitle',
+              lastMessageTime: '2020-01-02T14:22:22.000Z',
+              content: 'ща аннек расскажу',
+              unreadCount: 15,
+            },
+            {
+              chatTitle: 'chatTitle',
+              lastMessageTime: '2020-01-02T14:22:22.000Z',
+              content: 'ща аннек расскажу',
+              unreadCount: 15,
+            },
+            {
+              chatTitle: 'chatTitle',
+              lastMessageTime: '2020-01-02T14:22:22.000Z',
+              content: 'ща аннек расскажу',
+              unreadCount: 15,
+            },
+            {
+              chatTitle: 'chatTitle',
+              lastMessageTime: '2020-01-02T14:22:22.000Z',
+              content: 'ща аннек расскажу',
+              unreadCount: 15,
+            },
+            {
+              chatTitle: 'chatTitle',
+              lastMessageTime: '2020-01-02T14:22:22.000Z',
+              content: 'ща аннек расскажу',
+              unreadCount: 15,
+            },
+          ],
+        },
+      }),
+      chat: new Chat({
+        props: {
+          messages: [
+            {
+              content:
+                'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.',
+              time: '23:40',
+              className: 'companion',
+            },
+            {
+              content: 'Круто!',
+              time: '23:41',
+              className: 'user',
+            },
+          ],
+          userName: this.props.userName,
+          avatarSrc: this.props.avatarSrc,
+        },
+      }),
+    });
+    return this.compile(template);
+  }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = template();
-});
+export default Messenger;

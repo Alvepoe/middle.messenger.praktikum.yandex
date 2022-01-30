@@ -1,10 +1,51 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
-import '../../helpers/getConfigHelper.ts';
-import '../../layouts/profile/profile.ts';
-import template from './changePassword.hbs';
+import template from '../../layouts/profile/profile.hbs';
+import Block from '../../modules/Block';
+import SidebarLink from '../../components/sidebarLink/sidebarLink';
+import Avatar from '../../components/avatar/avatar';
+import Form from '../../components/form/form';
 
-Handlebars.registerPartial('changePassword', template);
+class ChangePassword extends Block {
+  render(): DocumentFragment {
+    this.initChildren({
+      sidebarLink: new SidebarLink(),
+      avatar: new Avatar({ props: { avatarSrc: this.props.avatarSrc } }),
+      form: new Form({
+        props: {
+          profileFields: [
+            {
+              type: 'password',
+              label: 'Старый пароль',
+              value: 'Старый пароль',
+              name: 'old_password',
+            },
+            {
+              type: 'password',
+              label: 'Новый пароль',
+              value: 'новый пароль',
+              name: 'new_password',
+            },
+            {
+              type: 'password',
+              label: 'Повторите новый пароль ещё раз',
+              value: 'новый пароль',
+              name: 'new_password',
+            },
+          ],
+          buttons: [
+            {
+              type: 'button',
+              label: 'Сохранить',
+              className: 'button_centered',
+            },
+          ],
+        },
+      }),
+    });
+    return this.compile(template, {
+      avatarSrc: this.props.avatarSrc,
+      userFirstName: this.props.userFirstName,
+    });
+  }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = template();
-});
+export default ChangePassword;

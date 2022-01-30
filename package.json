@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "start": "nodemon server.js",
-    "start:parcel": "parcel ./static/index.html",
+    "parcel": "parcel ./static/index.html",
     "build": "parcel build ./static/index.html"
   },
   "devDependencies": {

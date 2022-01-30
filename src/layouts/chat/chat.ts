@@ -1,6 +1,15 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
 import template from './chat.hbs';
 import './chat.scss';
-import '../../components/message/message.ts';
+import Block from '../../modules/Block';
+import Message from '../../components/message/message';
 
-Handlebars.registerPartial('chat', template);
+class Chat extends Block {
+  render(): DocumentFragment {
+    this.initChildren({
+      messages: this.props.messages?.map((message: object) => new Message({ props: { ...message } })),
+    });
+    return this.compile(template, { avatarSrc: this.props.avatarSrc, userName: this.props.userName });
+  }
+}
+
+export default Chat;

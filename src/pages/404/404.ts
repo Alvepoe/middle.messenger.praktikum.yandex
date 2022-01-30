@@ -1,9 +1,23 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
-import '../../helpers/getConfigHelper.ts';
-import template from './404.hbs';
+import template from '../../components/error/error.hbs';
+import Block from '../../modules/Block';
+import Link from '../../components/link/link';
+import '../../components/error/error.scss';
 
-Handlebars.registerPartial('error404', template);
+class Error404 extends Block {
+  render(): DocumentFragment {
+    this.initChildren({
+      link: new Link({
+        props: {
+          linkUrl: '#',
+          linkText: 'Войти',
+        },
+      }),
+    });
+    return this.compile(template, {
+      title: '404',
+      description: 'Не туда попали',
+    });
+  }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = template();
-});
+export default Error404;

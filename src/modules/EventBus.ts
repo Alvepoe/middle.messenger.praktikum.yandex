@@ -1,6 +1,6 @@
 class EventBus {
   private readonly listeners: {
-    [key: string]: CallableFunction[]
+    [key: string]: CallableFunction[];
   };
 
   constructor() {
@@ -20,9 +20,7 @@ class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event].filter(
-      (listener) => listener !== callback,
-    );
+    this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
   }
 
   public emit(event: string, ...args: string[]) {
@@ -30,7 +28,7 @@ class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach((listener) => {
+    this.listeners[event].forEach(listener => {
       listener(...args);
     });
   }

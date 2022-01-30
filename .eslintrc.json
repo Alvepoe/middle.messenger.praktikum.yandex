@@ -1,11 +1,12 @@
 {
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "extends": [
     "airbnb-base",
     "airbnb-typescript/base",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "no-underscore-dangle": "off",

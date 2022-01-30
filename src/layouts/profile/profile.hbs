@@ -1,12 +1,12 @@
 <main class="main">
     <section class="section">
         <aside class="profile profile__sidebar">
-            {{> sidebarLink }}
+            {{{ sidebarLink }}}
         </aside>
         <div class="profile__form-container">
             <div class="avatar">
-                {{#if avatar.src}}
-                    {{> avatar}}
+                {{#if avatarSrc}}
+                    {{{ avatar }}}
                 {{else}}
                     <div class="avatar__background"></div>
                 {{/if}}
@@ -14,13 +14,11 @@
                     <div>Поменять аватар</div>
                 </div>
             </div>
-            {{userInfo.firstName}}
+            {{userFirstName}}
 
-            {{> form formConfig}}
+            {{{ form }}}
             <ul class="profile__list">
-                {{#each profileLinks}}
-                    <li class="profile__list-item profile__list-item_margin">{{>link}}</li>
-                {{/each}}
+                {{{ profileLinks }}}
              </ul>
         </div>
     </section>

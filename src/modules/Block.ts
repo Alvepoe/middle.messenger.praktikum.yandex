@@ -1,10 +1,10 @@
-import {TemplateDelegate} from 'handlebars';
-import {v4 as uuidv4} from 'uuid';
+import { TemplateDelegate } from 'handlebars';
+import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
 
 type TProps = { [key: string]: any };
 
-type TChildren = {[key: string]: Block};
+type TChildren = { [key: string]: Block | Block[] };
 
 class Block {
   static EVENTS = {
@@ -27,13 +27,13 @@ class Block {
   private _element: Element | null;
 
   /** JSDoc
-     * @param {string} tagName
-     * @param {string} childrenTagName
-     * @param {Object} props
-     *
-     * @returns {void}
-     */
-  constructor({ tagName = 'div', childrenTagName = 'div', props = {}}) {
+   * @param {string} tagName
+   * @param {string} childrenTagName
+   * @param {Object} props
+   *
+   * @returns {void}
+   */
+  constructor({ tagName = 'div', childrenTagName = 'div', props = {} } = {}) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -74,7 +74,7 @@ class Block {
   }
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidMount(): void{}
+  componentDidMount(): void {}
 
   dispatchComponentDidMount() {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
@@ -82,7 +82,7 @@ class Block {
 
   _componentDidUpdate(oldProps: TProps, newProps: TProps): void {
     const isUpdated = this.componentDidUpdate(oldProps, newProps);
-    if(isUpdated) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    if (isUpdated) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
@@ -93,14 +93,14 @@ class Block {
     return new Proxy(props, {
       get(target, prop: string) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop: string, value) {
         target[prop] = value;
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет прав");
+        throw new Error('Нет прав');
       },
     });
   }
@@ -112,37 +112,34 @@ class Block {
 
   public compile(template: TemplateDelegate, props?: TProps): DocumentFragment {
     const propsAndStubs = { ...props };
-
     const fragment = document.createElement('template');
 
     Object.entries(this.children).forEach(([key, child]) => {
-      if(child) {
+      if (child) {
         if (Array.isArray(child)) {
-          child.forEach((item) => {
-            propsAndStubs[key] = `${propsAndStubs[key] ? propsAndStubs[key] : ''} <div data-id="${item.id}"></div>`
+          child.forEach(item => {
+            propsAndStubs[key] = `${propsAndStubs[key] ? propsAndStubs[key] : ''} <div data-id="${item.id}"></div>`;
           });
         } else {
-          propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+          propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
         }
       }
     });
 
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach((child) => {
-
-      if(child) {
+    Object.values(this.children).forEach(child => {
+      if (child) {
         if (Array.isArray(child)) {
           child.forEach(item => {
             const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
-            stub?.replaceWith(item.getContent())
+            stub?.replaceWith(item.getContent());
           });
         } else {
           const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-          stub?.replaceWith(child.getContent())
+          stub?.replaceWith(child.getContent());
         }
       }
-
     });
 
     return fragment.content;
@@ -160,7 +157,6 @@ class Block {
     const fragment = document.createElement('template');
     return fragment.content;
   }
-
 }
 
 export default Block;

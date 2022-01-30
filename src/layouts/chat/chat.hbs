@@ -2,8 +2,8 @@
     <div class="chat__wrapper">
         <div class="chat__header">
             <div class="chat__user-info">
-                <img class="chat__user-avatar" src={{ chat.avatarSrc }} alt="avatar">
-                <div class="chat__user-name">{{chat.userName}}</div>
+                <img class="chat__user-avatar" src={{ avatarSrc }} alt="avatar">
+                <div class="chat__user-name">{{userName}}</div>
             </div>
             <div class="chat__dot-menu">
                 <div class="chat__menu-dots"></div>
@@ -11,9 +11,7 @@
         </div>
         <div class="chat__messages">
             <div class="messages__date">19 июня</div>
-            {{#each messages}}
-                {{> message}}
-            {{/each}}
+            {{{ messages }}}
         </div>
         <div class="chat__footer">
             <div class="attach_file__label">
