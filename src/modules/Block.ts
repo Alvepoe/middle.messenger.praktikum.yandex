@@ -5,6 +5,7 @@ import EventBus from './EventBus';
 type TProps = { [key: string]: any };
 
 type TChildren = { [key: string]: Block | Block[] };
+type TEvents = { [key: string]: () => void };
 
 class Block {
   static EVENTS = {
@@ -22,6 +23,8 @@ class Block {
 
   public children: TChildren | TChildren[] = {};
 
+  events: TEvents = {};
+
   _meta: any = null;
 
   private _element: Element | null;
@@ -30,10 +33,11 @@ class Block {
    * @param {string} tagName
    * @param {string} childrenTagName
    * @param {Object} props
+   * @param {Object} events
    *
    * @returns {void}
    */
-  constructor({ tagName = 'div', childrenTagName = 'div', props = {} } = {}) {
+  constructor({ tagName = 'div', childrenTagName = 'div', props = {}, events = {} } = {}) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -41,11 +45,13 @@ class Block {
       props,
     };
 
-    this.props = this._makePropsProxy({ ...props, __id: this.id });
+    this.events = events;
+
+    this.id = uuidv4();
+    this.props = this._makePropsProxy({ ...props, _id: this.id });
 
     this._registerEvents(this.eventBus);
     this.eventBus.emit(Block.EVENTS.INIT);
-    this.id = uuidv4();
   }
 
   _createDocumentElement(tagName: string): HTMLElement {
@@ -108,9 +114,10 @@ class Block {
   _render() {
     const fragment = this.render();
     this._element = fragment.firstElementChild;
+    this.addEvents();
   }
 
-  public compile(template: TemplateDelegate, props?: TProps): DocumentFragment {
+  public compile(template: TemplateDelegate, props: TProps = {}): DocumentFragment {
     const propsAndStubs = { ...props };
     const fragment = document.createElement('template');
 
@@ -151,6 +158,12 @@ class Block {
 
   public initChildren(children: TChildren) {
     this.children = children;
+  }
+
+  addEvents() {
+    Object.keys(this.events).forEach((eventName: string) => {
+      this._element?.addEventListener(eventName, this.events[eventName]);
+    });
   }
 
   render() {

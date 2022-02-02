@@ -1,6 +1,7 @@
 import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
+import submitForm from '../../utils/submitForm';
 
 class Login extends Block {
   render(): DocumentFragment {
@@ -10,7 +11,7 @@ class Login extends Block {
           legendText: 'Вход',
           buttons: [
             {
-              type: 'button',
+              type: 'submit',
               label: 'Авторизоваться',
             },
           ],
@@ -35,6 +36,9 @@ class Login extends Block {
               className: 'link_centered',
             },
           ],
+        },
+        events: {
+          submit: submitForm,
         },
       }),
     });

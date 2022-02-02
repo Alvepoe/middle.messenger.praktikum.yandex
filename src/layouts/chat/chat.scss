@@ -111,6 +111,12 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.chat__form {
+  display: contents;
 }
 
 .messages__date {

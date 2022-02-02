@@ -4,6 +4,7 @@ import Block from '../../modules/Block';
 import ChatList from '../../components/chatList/chatList';
 import template from './messenger.hbs';
 import Chat from '../../layouts/chat/chat';
+import submitForm from '../../utils/submitForm';
 
 class Messenger extends Block {
   render(): DocumentFragment {
@@ -61,6 +62,9 @@ class Messenger extends Block {
           ],
           userName: this.props.userName,
           avatarSrc: this.props.avatarSrc,
+        },
+        events: {
+          submit: submitForm,
         },
       }),
     });

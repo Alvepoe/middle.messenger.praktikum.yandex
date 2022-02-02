@@ -3,6 +3,7 @@ import Block from '../../modules/Block';
 import SidebarLink from '../../components/sidebarLink/sidebarLink';
 import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
+import submitForm from '../../utils/submitForm';
 
 class ChangePassword extends Block {
   render(): DocumentFragment {
@@ -33,11 +34,14 @@ class ChangePassword extends Block {
           ],
           buttons: [
             {
-              type: 'button',
+              type: 'submit',
               label: 'Сохранить',
               className: 'button_centered',
             },
           ],
+        },
+        events: {
+          submit: submitForm,
         },
       }),
     });
