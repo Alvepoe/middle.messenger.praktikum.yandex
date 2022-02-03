@@ -24,7 +24,7 @@ const ERROR_MESSAGES: { [key: string]: string } = {
   last_name: 'Неверная фамилия',
 };
 
-const isValueValid = (name: string, value: string) => {
+export const isValueValid = (name: string, value: string) => {
   return INPUT_PATTERNS[name]?.test(value);
 };
 
@@ -45,12 +45,14 @@ const enableButton = (button: HTMLButtonElement | null) => {
   button?.removeAttribute('disabled');
 };
 
-function validateField(event: { target: HTMLInputElement }) {
-  const input = event.target;
+export const validateField = (input: HTMLInputElement) => {
   const { name, value } = input;
   const isValid = isValueValid(name, value);
-  const errorElement = input?.parentElement?.querySelector<HTMLElement>('.field__error');
-  const buttonElement = document.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const errorElement =
+    input?.parentElement?.querySelector<HTMLElement>('.field__error');
+  const buttonElement = document.querySelector<HTMLButtonElement>(
+    'button[type="submit"]'
+  );
   if (errorElement) {
     if (!isValid) {
       showError(errorElement, name);
@@ -60,6 +62,9 @@ function validateField(event: { target: HTMLInputElement }) {
       enableButton(buttonElement);
     }
   }
-}
+  return isValid;
+};
 
-export default validateField;
+export const handleInputValidation = (event: { target: HTMLInputElement }) => {
+  return validateField(event.target);
+};

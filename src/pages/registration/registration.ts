@@ -2,7 +2,7 @@ import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
-import validateField from '../../utils/validateInput';
+import { handleInputValidation } from '../../utils/validateInput';
 
 class Registration extends Block {
   render(): DocumentFragment {
@@ -25,8 +25,8 @@ class Registration extends Block {
                 name: 'email',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -37,8 +37,8 @@ class Registration extends Block {
                 name: 'login',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -49,8 +49,8 @@ class Registration extends Block {
                 name: 'first_name',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -61,8 +61,8 @@ class Registration extends Block {
                 name: 'last_name',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -73,8 +73,8 @@ class Registration extends Block {
                 name: 'phone',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -85,8 +85,8 @@ class Registration extends Block {
                 name: 'password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -97,8 +97,8 @@ class Registration extends Block {
                 name: 'password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
           ],

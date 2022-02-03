@@ -2,7 +2,7 @@ import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
-import validateField from '../../utils/validateInput';
+import { handleInputValidation } from '../../utils/validateInput';
 
 class Login extends Block {
   render(): DocumentFragment {
@@ -25,8 +25,8 @@ class Login extends Block {
                 name: 'login',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -37,8 +37,8 @@ class Login extends Block {
                 name: 'password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
           ],

@@ -4,7 +4,7 @@ import SidebarLink from '../../components/sidebarLink/sidebarLink';
 import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
-import validateField from '../../utils/validateInput';
+import { handleInputValidation } from '../../utils/validateInput';
 
 class ChangePassword extends Block {
   render(): DocumentFragment {
@@ -21,8 +21,8 @@ class ChangePassword extends Block {
                 name: 'old_password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -32,8 +32,8 @@ class ChangePassword extends Block {
                 name: 'new_password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -43,8 +43,8 @@ class ChangePassword extends Block {
                 name: 'new_password',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
           ],

@@ -5,7 +5,7 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import Link from '../../components/link/link';
 import submitForm from '../../utils/submitForm';
-import validateField from '../../utils/validateInput';
+import { handleInputValidation } from '../../utils/validateInput';
 
 class Settings extends Block {
   render(): DocumentFragment {
@@ -22,8 +22,8 @@ class Settings extends Block {
                 name: 'email',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -33,8 +33,8 @@ class Settings extends Block {
                 name: 'login',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -44,8 +44,8 @@ class Settings extends Block {
                 name: 'first_name',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -55,8 +55,8 @@ class Settings extends Block {
                 name: 'last_name',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
             {
@@ -73,8 +73,8 @@ class Settings extends Block {
                 name: 'phone',
               },
               events: {
-                focus: validateField,
-                blur: validateField,
+                focus: handleInputValidation,
+                blur: handleInputValidation,
               },
             },
           ],
@@ -94,21 +94,24 @@ class Settings extends Block {
         new Link({
           props: {
             linkUrl: '#',
-            className: 'link_mode_profile profile__list-item profile__list-item_margin',
+            className:
+              'link_mode_profile profile__list-item profile__list-item_margin',
             linkText: 'Изменить данные',
           },
         }),
         new Link({
           props: {
             linkUrl: '#',
-            className: 'link_mode_profile profile__list-item profile__list-item_margin',
+            className:
+              'link_mode_profile profile__list-item profile__list-item_margin',
             linkText: 'Изменить пароль',
           },
         }),
         new Link({
           props: {
             linkUrl: '#',
-            className: 'link_color_red link_mode_profile profile__list-item profile__list-item_margin',
+            className:
+              'link_color_red link_mode_profile profile__list-item profile__list-item_margin',
             linkText: 'Выйти',
           },
         }),
