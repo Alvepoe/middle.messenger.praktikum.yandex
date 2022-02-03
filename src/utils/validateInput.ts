@@ -11,6 +11,7 @@ const INPUT_PATTERNS: { [key: string]: any } = {
   phone: phoneNumberRegExp,
   first_name: nameRegExp,
   second_name: nameRegExp,
+  last_name: nameRegExp,
 };
 
 const ERROR_MESSAGES: { [key: string]: string } = {
@@ -27,18 +28,36 @@ const isValueValid = (name: string, value: string) => {
   return INPUT_PATTERNS[name]?.test(value);
 };
 
+const disableButton = (button: HTMLButtonElement | null) => {
+  button?.setAttribute('disabled', 'disabled');
+};
+
+const showError = (error: HTMLElement, inputName: string) => {
+  error.innerText = `${ERROR_MESSAGES[inputName]}`;
+  error.style.display = 'block';
+};
+
+const hideError = (error: HTMLElement) => {
+  error.style.display = 'none';
+};
+
+const enableButton = (button: HTMLButtonElement | null) => {
+  button?.removeAttribute('disabled');
+};
+
 function validateField(event: { target: HTMLInputElement }) {
   const input = event.target;
   const { name, value } = input;
   const isValid = isValueValid(name, value);
   const errorElement = input?.parentElement?.querySelector<HTMLElement>('.field__error');
-
+  const buttonElement = document.querySelector<HTMLButtonElement>('button[type="submit"]');
   if (errorElement) {
     if (!isValid) {
-      errorElement.innerText = `${ERROR_MESSAGES[name]}`;
-      errorElement.style.display = 'block';
+      showError(errorElement, name);
+      disableButton(buttonElement);
     } else {
-      errorElement.style.display = 'none';
+      hideError(errorElement);
+      enableButton(buttonElement);
     }
   }
 }
