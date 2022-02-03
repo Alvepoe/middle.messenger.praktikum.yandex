@@ -13,6 +13,16 @@ const INPUT_PATTERNS: { [key: string]: any } = {
   second_name: nameRegExp,
 };
 
+const ERROR_MESSAGES: { [key: string]: string } = {
+  email: 'Неверный формат электронной почты',
+  login: 'Неверный логин',
+  password: 'Неверный пароль',
+  phone: 'Неверный формат сотового номера',
+  first_name: 'Неверное имя',
+  second_name: 'Неверная фамилия',
+  last_name: 'Неверная фамилия',
+};
+
 const isValueValid = (name: string, value: string) => {
   return INPUT_PATTERNS[name]?.test(value);
 };
@@ -21,9 +31,15 @@ function validateField(event: { target: HTMLInputElement }) {
   const input = event.target;
   const { name, value } = input;
   const isValid = isValueValid(name, value);
+  const errorElement = input?.parentElement?.querySelector<HTMLElement>('.field__error');
 
-  if (!isValid) {
-    console.log(`error - ${name}`);
+  if (errorElement) {
+    if (!isValid) {
+      errorElement.innerText = `${ERROR_MESSAGES[name]}`;
+      errorElement.style.display = 'block';
+    } else {
+      errorElement.style.display = 'none';
+    }
   }
 }
 

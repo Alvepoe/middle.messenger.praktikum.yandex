@@ -17,6 +17,12 @@
   text-align: right;
 }
 
+.profile__input_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .profile-field__label {
   font-size: $fontSizeM;
 }

@@ -65,10 +65,6 @@ class Settings extends Block {
                 label: 'Имя в чате',
                 name: 'display_name',
               },
-              events: {
-                focus: validateField,
-                blur: validateField,
-              },
             },
             {
               props: {

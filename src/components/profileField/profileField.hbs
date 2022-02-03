@@ -1,14 +1,14 @@
 <li class="profile__list-item">
     <label class="profile-field">
         {{label}}
+      <div class='profile__input_wrapper'>
         <input
-                name="{{name}}"
-                value="{{value}}"
-                type="{{type}}"
-                class="profile-field__input"
+          name="{{name}}"
+          value="{{value}}"
+          type="{{type}}"
+          class="profile-field__input"
         >
+        <span class="field__error"></span>
+      </div>
     </label>
-    <span class="field__error">
-      {{error}}
-    </span>
 </li>
