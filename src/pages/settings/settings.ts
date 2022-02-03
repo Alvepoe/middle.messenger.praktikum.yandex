@@ -5,6 +5,7 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import Link from '../../components/link/link';
 import submitForm from '../../utils/submitForm';
+import validateField from '../../utils/validateInput';
 
 class Settings extends Block {
   render(): DocumentFragment {
@@ -15,40 +16,70 @@ class Settings extends Block {
         props: {
           profileFields: [
             {
-              type: 'text',
-              label: 'Почта',
-              value: 'pochta@yandex.ru',
-              name: 'email',
+              props: {
+                type: 'text',
+                label: 'Почта',
+                name: 'email',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Логин',
-              value: 'Логин',
-              name: 'login',
+              props: {
+                type: 'text',
+                label: 'Логин',
+                name: 'login',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Имя',
-              value: 'Иван',
-              name: 'first_name',
+              props: {
+                type: 'text',
+                label: 'Имя',
+                name: 'first_name',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Фамилия',
-              value: 'Иванов',
-              name: 'last_name',
+              props: {
+                type: 'text',
+                label: 'Фамилия',
+                name: 'last_name',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Имя в чате',
-              value: 'Ванёк',
-              name: 'display_name',
+              props: {
+                type: 'text',
+                label: 'Имя в чате',
+                name: 'display_name',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'tel',
-              label: 'Телефон',
-              value: '+7 (909) 967 30 30',
-              name: 'phone',
+              props: {
+                type: 'tel',
+                label: 'Телефон',
+                name: 'phone',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
           ],
           buttons: [

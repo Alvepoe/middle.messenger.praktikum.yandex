@@ -2,6 +2,7 @@ import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
+import validateField from '../../utils/validateInput';
 
 class Registration extends Block {
   render(): DocumentFragment {
@@ -17,46 +18,88 @@ class Registration extends Block {
           ],
           fields: [
             {
-              type: 'text',
-              label: 'Почта',
-              placeholder: 'Почта',
-              name: 'email',
+              props: {
+                type: 'text',
+                label: 'Почта',
+                placeholder: 'Почта',
+                name: 'email',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Логин',
-              placeholder: 'Логин',
-              name: 'login',
+              props: {
+                type: 'text',
+                label: 'Логин',
+                placeholder: 'Логин',
+                name: 'login',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Имя',
-              placeholder: 'Имя',
-              name: 'first_name',
+              props: {
+                type: 'text',
+                label: 'Имя',
+                placeholder: 'Имя',
+                name: 'first_name',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'text',
-              label: 'Фамилия',
-              placeholder: 'Фамилия',
-              name: 'last_name',
+              props: {
+                type: 'text',
+                label: 'Фамилия',
+                placeholder: 'Фамилия',
+                name: 'last_name',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'tel',
-              label: 'Телефон',
-              placeholder: 'Телефон',
-              name: 'phone',
+              props: {
+                type: 'tel',
+                label: 'Телефон',
+                placeholder: 'Телефон',
+                name: 'phone',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'password',
-              label: 'Пароль',
-              placeholder: 'Пароль',
-              name: 'password',
+              props: {
+                type: 'password',
+                label: 'Пароль',
+                placeholder: 'Пароль',
+                name: 'password',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'password',
-              label: 'Пароль (ещё раз)',
-              placeholder: 'Пароль (ещё раз)',
-              name: 'password',
+              props: {
+                type: 'password',
+                label: 'Пароль (ещё раз)',
+                placeholder: 'Пароль (ещё раз)',
+                name: 'password',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
           ],
           links: [

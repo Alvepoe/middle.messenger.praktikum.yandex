@@ -37,7 +37,7 @@ class Block {
    *
    * @returns {void}
    */
-  constructor({ tagName = 'div', childrenTagName = 'div', props = {}, events = {} } = {}) {
+  constructor({ tagName = 'div', childrenTagName = '', props = {}, events = {} } = {}) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -112,6 +112,7 @@ class Block {
   }
 
   _render() {
+    this.removeEvents();
     const fragment = this.render();
     this._element = fragment.firstElementChild;
     this.addEvents();
@@ -162,7 +163,23 @@ class Block {
 
   addEvents() {
     Object.keys(this.events).forEach((eventName: string) => {
-      this._element?.addEventListener(eventName, this.events[eventName]);
+      if (this._meta.childrenTagName) {
+        const firstChild = this._element?.querySelector(this._meta.childrenTagName);
+        firstChild?.addEventListener(eventName, this.events[eventName]);
+      } else {
+        this._element?.addEventListener(eventName, this.events[eventName]);
+      }
+    });
+  }
+
+  removeEvents() {
+    Object.keys(this.events).forEach((eventName: string) => {
+      if (this._meta.childrenTagName) {
+        const firstChild = this._element?.querySelector(this._meta.childrenTagName);
+        firstChild?.removeEventListener(eventName, this.events[eventName]);
+      } else {
+        this._element?.removeEventListener(eventName, this.events[eventName]);
+      }
     });
   }
 

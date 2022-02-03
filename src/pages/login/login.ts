@@ -2,6 +2,7 @@ import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
+import validateField from '../../utils/validateInput';
 
 class Login extends Block {
   render(): DocumentFragment {
@@ -17,16 +18,28 @@ class Login extends Block {
           ],
           fields: [
             {
-              type: 'text',
-              label: 'Логин',
-              placeholder: 'Логин',
-              name: 'login',
+              props: {
+                type: 'text',
+                label: 'Логин',
+                placeholder: 'Логин',
+                name: 'login',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
             {
-              type: 'password',
-              label: 'Пароль',
-              placeholder: 'Пароль',
-              name: 'password',
+              props: {
+                type: 'password',
+                label: 'Пароль',
+                placeholder: 'Пароль',
+                name: 'password',
+              },
+              events: {
+                focus: validateField,
+                blur: validateField,
+              },
             },
           ],
           links: [
