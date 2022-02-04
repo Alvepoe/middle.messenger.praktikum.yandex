@@ -4,7 +4,7 @@
 
 Использовались макеты яндекса, handlebars, scss. Страницы чатов и модалок пока нет :(
 
-Netlify: https://admiring-brattain-93f4b6.netlify.app/
+Netlify: https://mystifying-wright-39e221.netlify.app
 
 PR Sprint 2: https://github.com/Alvepoe/middle.messenger.praktikum.yandex/pull/3
 
