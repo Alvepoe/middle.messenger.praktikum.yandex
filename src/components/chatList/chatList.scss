@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .chat-list__header {
   display: flex;
@@ -28,7 +28,7 @@
   -ms-transform: scale(0.5, 1); /* IE 9 */
   -o-transform: scale(0.5, 1); /* Opera */
   transform: scale(0.5, 1); /* W3C */
-  content: ">";
+  content: '>';
   position: relative;
   margin-left: 2px;
 }
@@ -36,7 +36,7 @@
 .chat-list__input-search {
   margin-bottom: 14px;
   width: 290px;
-  height: 32px;;
+  height: 32px;
   border: none;
   border-radius: 5px;
   color: $gray;
@@ -56,6 +56,3 @@
     }
   }
 }
-
-
-
