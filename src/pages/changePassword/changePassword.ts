@@ -5,6 +5,7 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
+import renderDOM from '../../utils/renderDom';
 
 class ChangePassword extends Block {
   render(): DocumentFragment {
@@ -67,5 +68,9 @@ class ChangePassword extends Block {
     });
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDOM(new ChangePassword());
+});
 
 export default ChangePassword;

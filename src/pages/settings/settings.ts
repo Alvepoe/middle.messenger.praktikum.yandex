@@ -6,6 +6,7 @@ import Form from '../../components/form/form';
 import Link from '../../components/link/link';
 import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
+import renderDOM from '../../utils/renderDom';
 
 class Settings extends Block {
   render(): DocumentFragment {
@@ -123,5 +124,9 @@ class Settings extends Block {
     });
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDOM(new Settings());
+});
 
 export default Settings;

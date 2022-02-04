@@ -5,6 +5,7 @@ import ChatList from '../../components/chatList/chatList';
 import template from './messenger.hbs';
 import Chat from '../../layouts/chat/chat';
 import submitForm from '../../utils/submitForm';
+import renderDOM from '../../utils/renderDom';
 
 class Messenger extends Block {
   render(): DocumentFragment {
@@ -71,5 +72,9 @@ class Messenger extends Block {
     return this.compile(template);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDOM(new Messenger());
+});
 
 export default Messenger;

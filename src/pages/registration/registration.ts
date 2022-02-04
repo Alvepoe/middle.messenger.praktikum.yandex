@@ -3,6 +3,7 @@ import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
+import renderDOM from '../../utils/renderDom';
 
 class Registration extends Block {
   render(): DocumentFragment {
@@ -118,5 +119,9 @@ class Registration extends Block {
     return this.compile(template);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDOM(new Registration());
+});
 
 export default Registration;
