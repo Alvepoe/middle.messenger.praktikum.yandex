@@ -1,17 +1,23 @@
 import './chatList.scss';
 import Block from '../../modules/Block';
 import template from './chatList.hbs';
-import ChatPreview from '../chatPreview/chatPreview';
+import ChatPreview, { TChatPreviewProps } from '../chatPreview/chatPreview';
 
-class ChatList extends Block {
+type TChatListProps = {
+  chats: TChatPreviewProps[];
+};
+
+class ChatList extends Block<TChatListProps> {
   render(): DocumentFragment {
     this.initChildren({
       chatPreviews: this.props.chats.map(
-        (chat: {}) =>
+        (chat: TChatPreviewProps) =>
           new ChatPreview({
-            props: {
-              ...chat,
-            },
+            userAvatarSrc: chat.userAvatarSrc,
+            chatTitle: chat.chatTitle,
+            lastMessageTime: chat.lastMessageTime,
+            content: chat.content,
+            unreadCount: chat.unreadCount,
           })
       ),
     });

@@ -5,18 +5,12 @@ import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
 import renderDOM from '../../utils/renderDom';
 
-class Login extends Block {
+class Login extends Block<{}> {
   render(): DocumentFragment {
     this.initChildren({
-      form: new Form({
-        props: {
+      form: new Form(
+        {
           legendText: 'Вход',
-          buttons: [
-            {
-              type: 'submit',
-              label: 'Авторизоваться',
-            },
-          ],
           fields: [
             {
               props: {
@@ -43,6 +37,12 @@ class Login extends Block {
               },
             },
           ],
+          buttons: [
+            {
+              type: 'submit',
+              label: 'Авторизоваться',
+            },
+          ],
           links: [
             {
               linkUrl: '#',
@@ -51,10 +51,10 @@ class Login extends Block {
             },
           ],
         },
-        events: {
+        {
           submit: submitForm,
-        },
-      }),
+        }
+      ),
     });
     return this.compile(template);
   }

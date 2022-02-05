@@ -1,24 +1,34 @@
 import template from './form.hbs';
 import './form.scss';
-import Block from '../../modules/Block';
-import Field from '../field/field';
-import Button from '../button/button';
-import Link from '../link/link';
-import ProfileField from '../profileField/profileField';
+import Block, { TEvents } from '../../modules/Block';
+import Field, { TFieldProps } from '../field/field';
+import Button, { TButtonProps } from '../button/button';
+import Link, { TLinkProps } from '../link/link';
+import ProfileField, { TProfileFieldProps } from '../profileField/profileField';
 
-class Form extends Block {
+type TFormProps = {
+  legendText?: string;
+  fields?: { props: TFieldProps; events?: TEvents }[];
+  profileFields?: { props: TProfileFieldProps; events?: TEvents }[];
+  links?: TLinkProps[];
+  buttons: TButtonProps[];
+};
+
+class Form extends Block<TFormProps> {
   render(): DocumentFragment {
     this.initChildren({
-      fields: this.props.fields?.map(({ props = {}, events = {} }) => {
-        return new Field({ props, events, childrenTagName: 'input' });
+      fields: this.props.fields?.map(({ props, events }) => {
+        return new Field(props, events, 'input');
       }),
       profileFields: this.props.profileFields?.map(
-        ({ props = {}, events = {} }) => new ProfileField({ props, events, childrenTagName: 'input' })
+        ({ props, events }) => new ProfileField(props, events, 'input')
       ),
-      buttons: this.props.buttons?.map((button: object) => new Button({ props: { ...button } })),
-      links: this.props.links?.map((link: object) => new Link({ props: { ...link } })),
+      buttons: this.props.buttons?.map(
+        (button: TButtonProps) => new Button(button)
+      ),
+      links: this.props.links?.map((link: TLinkProps) => new Link({ ...link })),
     });
-    return this.compile(template, {
+    return this.compile(template, <TFormProps>{
       legendText: this.props.legendText,
     });
   }

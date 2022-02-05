@@ -2,10 +2,16 @@ import template from './link.hbs';
 import './link.scss';
 import Block from '../../modules/Block';
 
-class Link extends Block {
+export type TLinkProps = {
+  linkUrl?: string;
+  className?: string;
+  linkText?: string;
+};
+
+class Link extends Block<TLinkProps> {
   render(): DocumentFragment {
     return this.compile(template, {
-      linUrl: this.props.linUrl,
+      linkUrl: this.props.linkUrl,
       className: this.props.className,
       linkText: this.props.linkText,
     });

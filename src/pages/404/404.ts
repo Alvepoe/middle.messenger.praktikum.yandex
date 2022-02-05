@@ -3,15 +3,14 @@ import Block from '../../modules/Block';
 import Link from '../../components/link/link';
 import '../../components/error/error.scss';
 import renderDOM from '../../utils/renderDom';
+import { TErrorPage } from '../../components/error/error';
 
-class Error404 extends Block {
+class Error404 extends Block<TErrorPage> {
   render(): DocumentFragment {
     this.initChildren({
       link: new Link({
-        props: {
-          linkUrl: '#',
-          linkText: 'Войти',
-        },
+        linkUrl: '#',
+        linkText: 'Войти',
       }),
     });
     return this.compile(template, {

@@ -69,6 +69,6 @@ export const validateField = (input: HTMLInputElement) => {
   return isValid;
 };
 
-export const handleInputValidation = (event: { target: HTMLInputElement }) => {
-  return validateField(event.target);
+export const handleInputValidation = (event: Event): void => {
+  return validateField(event.target as HTMLInputElement);
 };

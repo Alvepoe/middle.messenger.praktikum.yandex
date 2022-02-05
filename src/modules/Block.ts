@@ -2,12 +2,16 @@ import { TemplateDelegate } from 'handlebars';
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
 
-type TProps = { [key: string]: any };
+interface IProps {
+  [key: string | symbol]: unknown;
+}
 
-type TChildren = { [key: string]: Block | Block[] };
-type TEvents = { [key: string]: () => void };
+type TChildren = { [key: string]: Block | Block[] | undefined };
+export type TEvents = {
+  [key: string]: (event: Event) => void;
+};
 
-class Block {
+class Block<Props extends IProps = {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -17,7 +21,7 @@ class Block {
 
   private readonly eventBus: EventBus;
 
-  props: TProps;
+  props: Props;
 
   public id: string;
 
@@ -30,14 +34,19 @@ class Block {
   private _element: Element | null;
 
   /** JSDoc
-   * @param {string} tagName
-   * @param {string} childrenTagName
    * @param {Object} props
    * @param {Object} events
    *
+   * @param {string} tagName
+   * @param {string} childrenTagName
    * @returns {void}
    */
-  constructor({ tagName = 'div', childrenTagName = '', props = {}, events = {} } = {}) {
+  constructor(
+    props?: Props,
+    events = {},
+    childrenTagName = '',
+    tagName = 'div'
+  ) {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -48,8 +57,9 @@ class Block {
     this.events = events;
 
     this.id = uuidv4();
-    this.props = this._makePropsProxy({ ...props, _id: this.id });
-
+    if (props) {
+      this.props = this._makePropsProxy({ ...props, _id: this.id });
+    }
     this._registerEvents(this.eventBus);
     this.eventBus.emit(Block.EVENTS.INIT);
   }
@@ -86,22 +96,22 @@ class Block {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: TProps, newProps: TProps): void {
+  _componentDidUpdate(oldProps: Props, newProps: Props): void {
     const isUpdated = this.componentDidUpdate(oldProps, newProps);
     if (isUpdated) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
     return oldProps !== newProps;
   }
 
-  _makePropsProxy(props: TProps) {
+  _makePropsProxy(props: Props): Props {
     return new Proxy(props, {
-      get(target, prop: string) {
+      get(target, prop: keyof Props) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop: string, value) {
+      set(target, prop: keyof Props, value) {
         target[prop] = value;
         return true;
       },
@@ -118,15 +128,24 @@ class Block {
     this.addEvents();
   }
 
-  public compile(template: TemplateDelegate, props: TProps = {}): DocumentFragment {
-    const propsAndStubs = { ...props };
+  public compile(template: TemplateDelegate, props?: Props): DocumentFragment {
+    const propsAndStubs = {} as Record<string | symbol, any>;
+
+    if (props) {
+      Reflect.ownKeys(props)?.forEach(prop => {
+        propsAndStubs[prop] = props[prop];
+      });
+    }
+
     const fragment = document.createElement('template');
 
     Object.entries(this.children).forEach(([key, child]) => {
       if (child) {
         if (Array.isArray(child)) {
           child.forEach(item => {
-            propsAndStubs[key] = `${propsAndStubs[key] ? propsAndStubs[key] : ''} <div data-id="${item.id}"></div>`;
+            propsAndStubs[key] = `${
+              propsAndStubs[key] ? propsAndStubs[key] : ''
+            } <div data-id="${item.id}"></div>`;
           });
         } else {
           propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
@@ -140,11 +159,15 @@ class Block {
       if (child) {
         if (Array.isArray(child)) {
           child.forEach(item => {
-            const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
+            const stub = fragment.content.querySelector(
+              `[data-id="${item.id}"]`
+            );
             stub?.replaceWith(item.getContent());
           });
         } else {
-          const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+          const stub = fragment.content.querySelector(
+            `[data-id="${child.id}"]`
+          );
           stub?.replaceWith(child.getContent());
         }
       }
@@ -164,7 +187,9 @@ class Block {
   addEvents() {
     Object.keys(this.events).forEach((eventName: string) => {
       if (this._meta.childrenTagName) {
-        const firstChild = this._element?.querySelector(this._meta.childrenTagName);
+        const firstChild = this._element?.querySelector(
+          this._meta.childrenTagName
+        );
         firstChild?.addEventListener(eventName, this.events[eventName]);
       } else {
         this._element?.addEventListener(eventName, this.events[eventName]);
@@ -175,7 +200,9 @@ class Block {
   removeEvents() {
     Object.keys(this.events).forEach((eventName: string) => {
       if (this._meta.childrenTagName) {
-        const firstChild = this._element?.querySelector(this._meta.childrenTagName);
+        const firstChild = this._element?.querySelector(
+          this._meta.childrenTagName
+        );
         firstChild?.removeEventListener(eventName, this.events[eventName]);
       } else {
         this._element?.removeEventListener(eventName, this.events[eventName]);

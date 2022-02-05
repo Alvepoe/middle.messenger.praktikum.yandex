@@ -7,47 +7,50 @@ import Chat from '../../layouts/chat/chat';
 import submitForm from '../../utils/submitForm';
 import renderDOM from '../../utils/renderDom';
 
-class Messenger extends Block {
+type TMessengerProps = {
+  avatarSrc?: string;
+  userName: string;
+};
+
+class Messenger extends Block<TMessengerProps> {
   render(): DocumentFragment {
     this.initChildren({
       chatList: new ChatList({
-        props: {
-          chats: [
-            {
-              chatTitle: 'chatTitle',
-              lastMessageTime: '2020-01-02T14:22:22.000Z',
-              content: 'ща аннек расскажу',
-              unreadCount: 15,
-            },
-            {
-              chatTitle: 'chatTitle',
-              lastMessageTime: '2020-01-02T14:22:22.000Z',
-              content: 'ща аннек расскажу',
-              unreadCount: 15,
-            },
-            {
-              chatTitle: 'chatTitle',
-              lastMessageTime: '2020-01-02T14:22:22.000Z',
-              content: 'ща аннек расскажу',
-              unreadCount: 15,
-            },
-            {
-              chatTitle: 'chatTitle',
-              lastMessageTime: '2020-01-02T14:22:22.000Z',
-              content: 'ща аннек расскажу',
-              unreadCount: 15,
-            },
-            {
-              chatTitle: 'chatTitle',
-              lastMessageTime: '2020-01-02T14:22:22.000Z',
-              content: 'ща аннек расскажу',
-              unreadCount: 15,
-            },
-          ],
-        },
+        chats: [
+          {
+            chatTitle: 'chatTitle',
+            lastMessageTime: '2020-01-02T14:22:22.000Z',
+            content: 'ща аннек расскажу',
+            unreadCount: 15,
+          },
+          {
+            chatTitle: 'chatTitle',
+            lastMessageTime: '2020-01-02T14:22:22.000Z',
+            content: 'ща аннек расскажу',
+            unreadCount: 15,
+          },
+          {
+            chatTitle: 'chatTitle',
+            lastMessageTime: '2020-01-02T14:22:22.000Z',
+            content: 'ща аннек расскажу',
+            unreadCount: 15,
+          },
+          {
+            chatTitle: 'chatTitle',
+            lastMessageTime: '2020-01-02T14:22:22.000Z',
+            content: 'ща аннек расскажу',
+            unreadCount: 15,
+          },
+          {
+            chatTitle: 'chatTitle',
+            lastMessageTime: '2020-01-02T14:22:22.000Z',
+            content: 'ща аннек расскажу',
+            unreadCount: 15,
+          },
+        ],
       }),
-      chat: new Chat({
-        props: {
+      chat: new Chat(
+        {
           messages: [
             {
               content:
@@ -64,17 +67,21 @@ class Messenger extends Block {
           userName: this.props.userName,
           avatarSrc: this.props.avatarSrc,
         },
-        events: {
+        {
           submit: submitForm,
-        },
-      }),
+        }
+      ),
     });
     return this.compile(template);
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(new Messenger());
+  renderDOM(
+    new Messenger({
+      userName: 'Лёша',
+    })
+  );
 });
 
 export default Messenger;

@@ -7,13 +7,18 @@ import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
 import renderDOM from '../../utils/renderDom';
 
-class ChangePassword extends Block {
+type TChangePasswordProps = {
+  avatarSrc?: string;
+  userFirstName: string;
+};
+
+class ChangePassword extends Block<TChangePasswordProps> {
   render(): DocumentFragment {
     this.initChildren({
       sidebarLink: new SidebarLink(),
-      avatar: new Avatar({ props: { avatarSrc: this.props.avatarSrc } }),
-      form: new Form({
-        props: {
+      avatar: new Avatar({ avatarSrc: this.props.avatarSrc }),
+      form: new Form(
+        {
           profileFields: [
             {
               props: {
@@ -57,10 +62,10 @@ class ChangePassword extends Block {
             },
           ],
         },
-        events: {
+        {
           submit: submitForm,
-        },
-      }),
+        }
+      ),
     });
     return this.compile(template, {
       avatarSrc: this.props.avatarSrc,
@@ -70,7 +75,11 @@ class ChangePassword extends Block {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(new ChangePassword());
+  renderDOM(
+    new ChangePassword({
+      userFirstName: 'Лёша',
+    })
+  );
 });
 
 export default ChangePassword;

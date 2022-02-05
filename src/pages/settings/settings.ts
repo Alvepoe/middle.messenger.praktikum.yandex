@@ -5,16 +5,21 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import Link from '../../components/link/link';
 import submitForm from '../../utils/submitForm';
-import { handleInputValidation } from '../../utils/validateInput';
 import renderDOM from '../../utils/renderDom';
+import { handleInputValidation } from '../../utils/validateInput';
 
-class Settings extends Block {
+type TSettingsProps = {
+  avatarSrc?: string;
+  userFirstName: string;
+};
+
+class Settings extends Block<TSettingsProps> {
   render(): DocumentFragment {
     this.initChildren({
       sidebarLink: new SidebarLink(),
-      avatar: new Avatar({ props: { avatarSrc: this.props.avatarSrc } }),
-      form: new Form({
-        props: {
+      avatar: new Avatar({ avatarSrc: this.props.avatarSrc }),
+      form: new Form(
+        {
           profileFields: [
             {
               props: {
@@ -87,34 +92,28 @@ class Settings extends Block {
             },
           ],
         },
-        events: {
+        {
           submit: submitForm,
-        },
-      }),
+        }
+      ),
       profileLinks: [
         new Link({
-          props: {
-            linkUrl: '#',
-            className:
-              'link_mode_profile profile__list-item profile__list-item_margin',
-            linkText: 'Изменить данные',
-          },
+          linkUrl: '#',
+          className:
+            'link_mode_profile profile__list-item profile__list-item_margin',
+          linkText: 'Изменить данные',
         }),
         new Link({
-          props: {
-            linkUrl: '#',
-            className:
-              'link_mode_profile profile__list-item profile__list-item_margin',
-            linkText: 'Изменить пароль',
-          },
+          linkUrl: '#',
+          className:
+            'link_mode_profile profile__list-item profile__list-item_margin',
+          linkText: 'Изменить пароль',
         }),
         new Link({
-          props: {
-            linkUrl: '#',
-            className:
-              'link_color_red link_mode_profile profile__list-item profile__list-item_margin',
-            linkText: 'Выйти',
-          },
+          linkUrl: '#',
+          className:
+            'link_color_red link_mode_profile profile__list-item profile__list-item_margin',
+          linkText: 'Выйти',
         }),
       ],
     });
@@ -126,7 +125,11 @@ class Settings extends Block {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(new Settings());
+  renderDOM(
+    new Settings({
+      userFirstName: 'Лёша',
+    })
+  );
 });
 
 export default Settings;

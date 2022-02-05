@@ -8,8 +8,8 @@ import renderDOM from '../../utils/renderDom';
 class Registration extends Block {
   render(): DocumentFragment {
     this.initChildren({
-      form: new Form({
-        props: {
+      form: new Form(
+        {
           legendText: 'Регистрация',
           buttons: [
             {
@@ -111,10 +111,10 @@ class Registration extends Block {
             },
           ],
         },
-        events: {
+        {
           submit: submitForm,
-        },
-      }),
+        }
+      ),
     });
     return this.compile(template);
   }
