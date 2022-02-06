@@ -3,9 +3,9 @@ import './link.scss';
 import Block from '../../modules/Block';
 
 export type TLinkProps = {
-  linkUrl?: string;
+  linkUrl: string;
   className?: string;
-  linkText?: string;
+  linkText: string;
 };
 
 class Link extends Block<TLinkProps> {

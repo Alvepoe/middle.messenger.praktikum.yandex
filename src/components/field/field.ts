@@ -4,9 +4,9 @@ import Block from '../../modules/Block';
 
 export type TFieldProps = {
   type?: string;
-  name?: string;
-  placeholder?: string;
-  label?: string;
+  name: string;
+  placeholder: string;
+  label: string;
 };
 
 class Field extends Block<TFieldProps> {

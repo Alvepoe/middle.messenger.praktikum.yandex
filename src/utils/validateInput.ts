@@ -1,4 +1,6 @@
-const emailRegExp = /\S+@\S+\.\S+/;
+// https://emailregex.com/
+const emailRegExp =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const loginRegExp = /[a-z-A-Z-0-9-_]{3,20}$/;
 const passwordRegExp = /^(?=.*\d)(?=.*[A-Z]).{8,40}$/;
 const phoneNumberRegExp = /(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,15}(\s*)?/;

@@ -7,12 +7,12 @@ type TOptions = {
   method?: string;
 };
 
-const METHODS = {
-  GET: 'GET',
-  PUT: 'PUT',
-  POST: 'POST',
-  DELETE: 'DELETE',
-};
+enum METHODS {
+  GET = 'GET',
+  PUT = 'PUT',
+  POST = 'POST',
+  DELETE = 'DELETE',
+}
 
 /**
  * Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
@@ -31,14 +31,7 @@ function queryStringify(data: any): string {
 
 class HTTPTransport {
   get = (url: string, options: TOptions) => {
-    const { data } = options;
-    let requestString = url;
-    if (data) {
-      const strinfiedData = queryStringify(data);
-      requestString = `${url}${strinfiedData}`;
-    }
-
-    return this.request(requestString, {
+    return this.request(url, {
       ...options,
       method: METHODS.GET,
       timeout: options.timeout,
@@ -74,10 +67,16 @@ class HTTPTransport {
   // data — obj
   request(url: string, options: TOptions) {
     const { method = METHODS.GET, data, headers, timeout = 0 } = options;
+    let requestString = url;
+
+    if (data) {
+      const stringifiedData = queryStringify(data);
+      requestString = `${url}${stringifiedData}`;
+    }
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      xhr.open(method, requestString);
 
       xhr.onload = function () {
         resolve(xhr);
@@ -94,7 +93,7 @@ class HTTPTransport {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      if (method === METHODS.GET || !data) {
+      if (!data) {
         xhr.send();
       } else {
         xhr.send(data);

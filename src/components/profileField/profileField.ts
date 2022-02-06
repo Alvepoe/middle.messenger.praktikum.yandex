@@ -5,8 +5,8 @@ import Block from '../../modules/Block';
 
 export type TProfileFieldProps = {
   type?: string;
-  name?: string;
-  label?: string;
+  name: string;
+  label: string;
 };
 
 class ProfileField extends Block<TProfileFieldProps> {

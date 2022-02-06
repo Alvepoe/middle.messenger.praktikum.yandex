@@ -5,7 +5,7 @@ import Block from '../../modules/Block';
 export type TButtonProps = {
   type?: string;
   className?: string;
-  label?: string;
+  label: string;
 };
 
 class Button extends Block<TButtonProps> {
