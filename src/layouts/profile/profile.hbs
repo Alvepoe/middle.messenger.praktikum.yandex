@@ -1,0 +1,25 @@
+<main class="main">
+    <section class="section">
+        <aside class="profile profile__sidebar">
+            {{{ sidebarLink }}}
+        </aside>
+        <div class="profile__form-container">
+            <div class="avatar">
+                {{#if avatarSrc}}
+                    {{{ avatar }}}
+                {{else}}
+                    <div class="avatar__background"></div>
+                {{/if}}
+                <div class="avatar__overlay">
+                    <div>Поменять аватар</div>
+                </div>
+            </div>
+            {{userFirstName}}
+
+            {{{ form }}}
+            <ul class="profile__list">
+                {{{ profileLinks }}}
+             </ul>
+        </div>
+    </section>
+</main>

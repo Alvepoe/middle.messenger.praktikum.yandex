@@ -1,0 +1,37 @@
+@import 'src/styles/variables';
+
+.message {
+  border-radius: 11px;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 11px;
+  margin: 5px;
+
+  line-height: 15px;
+  color: black;
+
+  &__companion {
+    align-self: flex-start;
+    border-top-left-radius: 0;
+    background-color: $sidebarBackground;
+  }
+  &__user {
+    background-color: $lightPrimaryColor;
+    border-bottom-right-radius: 0;
+    align-self: flex-end;
+  }
+}
+
+.message__time {
+  font-style: normal;
+  font-size: $fontSizeS;
+  line-height: 9px;
+  text-align: right;
+  padding-top: 5px;
+  &__companion {
+    color: $gray;
+  }
+  &__user {
+    color: $primaryColor;
+  }
+}

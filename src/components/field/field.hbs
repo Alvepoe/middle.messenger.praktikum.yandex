@@ -1,13 +1,12 @@
 <div class="form__field-wrapper field">
   <input
-    type="{{field.type}}"
-    id="{{field.name}}"
+    type="{{type}}"
+    name="{{name}}"
+    id="{{name}}"
     class="form__field"
-    placeholder="{{field.placeholder}}"
+    placeholder="{{placeholder}}"
     required
   />
-  <span class="field__error">
-    {{field.error}}
-  </span>
-  <label for="{{field.name}}" class="form__label">{{field.label}}</label>
+  <span class="field__error"></span>
+  <label for="{{name}}" class="form__label">{{label}}</label>
 </div>

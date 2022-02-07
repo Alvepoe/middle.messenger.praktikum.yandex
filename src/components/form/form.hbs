@@ -10,28 +10,19 @@
             </legend>
 
             {{#if fields}}
-                {{#each fields}}
-                    {{>field}}
-                {{/each}}
+                {{{fields}}}
             {{/if}}
 
             {{#if profileFields}}
                 <ul class="profile__list">
-                    {{#each profileFields}}
-                    <li class="profile__list-item">
-                        {{>profileField}}
-                    </li>
-                    {{/each}}
+                    {{{profileFields}}}
                 </ul>
             {{/if}}
 
         </fieldset>
 
-        {{#each buttons}}
-            <div class="form__controls">{{>button}}</div>
-        {{/each}}
+        {{{buttons}}}
+
     </form>
-    {{#each links}}
-        <div class="form__controls">{{>link}}</div>
-    {{/each}}
+    {{{links}}}
 </div>

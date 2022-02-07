@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .link {
   padding: 0;
@@ -11,6 +11,12 @@
 
 .link_color_red {
   color: $red;
+}
+
+.link_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link:hover {

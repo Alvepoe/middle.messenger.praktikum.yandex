@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .form__field-wrapper {
   position: relative;
@@ -39,6 +39,7 @@
 
 .field__error {
   color: $red;
+  display: none;
 }
 
 .form__field:focus {

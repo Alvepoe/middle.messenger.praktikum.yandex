@@ -2,14 +2,14 @@
 
 Учебный проект курса яндекс.практикума "middle frontend-разработчик" - чат без использования фреймворков. 
 
-Использовались макеты яндекса, handlebars, scss. Страницы чатов и модалок пока нет :(
+Использовались макеты яндекса, handlebars, scss, typescript, eslint, stylelint
 
-Netlify: https://mystifying-wright-39e221.netlify.app
+Реализованы все основные макеты, добавлена валидация, сбор данных формы и вывод их в консоль лог, добавлен класс для работы с запросами.
 
-PR Sprint 2: https://github.com/Alvepoe/middle.messenger.praktikum.yandex/pull/3
+Netlify: https://mystifying-wright-39e221.netlify.app/
 
 ## Установка
 
 - `npm install` — установка пакетов,
-- `npm start:parcel` — запуск сборщика,
+- `npm parcel` — запуск сборщика,
 - `npm run start` – запуск сервера

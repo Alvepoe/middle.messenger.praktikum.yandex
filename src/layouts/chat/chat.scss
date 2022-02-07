@@ -1,0 +1,126 @@
+@import 'src/styles/variables';
+
+.chat {
+  width: calc((100% / 12) * 9);
+}
+
+.chat__wrapper {
+  width: 100%;
+}
+
+.chat__header {
+  display: flex;
+  margin: 0 20px;
+  border-bottom: 1px solid $sidebarBorder;
+  height: 54px;
+}
+
+.chat__user-info {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  height: 54px;
+}
+
+.chat__user-avatar {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  margin: auto 0;
+}
+
+.chat__user-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 13px;
+  margin: auto 10px;
+}
+
+.chat__menu-dots {
+  top: 5px;
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background-color: black;
+  box-shadow: 0 5px 0 black, 0 10px 0 black;
+}
+
+.chat__dot-menu {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  &:hover {
+    background-color: $lightGray;
+
+    .chat__menu-dots {
+      background-color: $primaryColor;
+      box-shadow: 0 5px 0 $primaryColor, 0 10px 0 $primaryColor;
+    }
+  }
+}
+
+.chat__footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+  border-top: 1px solid $sidebarBorder;
+  height: 54px;
+}
+
+.chat__messages {
+  height: calc(100% - 2 * 54px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat__input-message {
+  margin-top: 10px;
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-radius: 30px;
+  color: black;
+  padding-left: 20px;
+  background-color: $lightGray;
+
+  &:focus {
+    outline-color: $gray;
+
+    &::placeholder {
+      color: $transparent;
+    }
+  }
+}
+
+.attach_file__label {
+  line-height: 16px;
+  padding: 0.5em 0.4em;
+  margin: 0.2em;
+  cursor: pointer;
+}
+
+.chat__submit-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.chat__form {
+  display: contents;
+}
+
+.messages__date {
+  font-size: $fontSizeM;
+  color: $gray;
+  margin: 25px;
+}
