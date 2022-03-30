@@ -8,7 +8,7 @@ class Error500 extends Block<TErrorPage> {
   render(): DocumentFragment {
     this.initChildren({
       link: new Link({
-        linkUrl: '#',
+        linkUrl: '/messenger',
         linkText: 'Назад к чатам',
       }),
     });

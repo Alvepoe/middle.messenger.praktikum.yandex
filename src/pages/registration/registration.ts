@@ -104,7 +104,7 @@ class Registration extends Block {
           ],
           links: [
             {
-              linkUrl: '#',
+              linkUrl: '/',
               linkText: 'Войти',
               className: 'link_centered',
             },

@@ -44,7 +44,7 @@ class Login extends Block<{}> {
           ],
           links: [
             {
-              linkUrl: '#',
+              linkUrl: '/sign-up',
               linkText: 'Нет аккаунта?',
               className: 'link_centered',
             },

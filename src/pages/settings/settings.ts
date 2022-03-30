@@ -103,13 +103,13 @@ class Settings extends Block<TSettingsProps> {
           linkText: 'Изменить данные',
         }),
         new Link({
-          linkUrl: '#',
+          linkUrl: '/change-password',
           className:
             'link_mode_profile profile__list-item profile__list-item_margin',
           linkText: 'Изменить пароль',
         }),
         new Link({
-          linkUrl: '#',
+          linkUrl: '/',
           className:
             'link_color_red link_mode_profile profile__list-item profile__list-item_margin',
           linkText: 'Выйти',

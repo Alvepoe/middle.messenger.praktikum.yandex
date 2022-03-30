@@ -8,7 +8,7 @@ class Error404 extends Block<TErrorPage> {
   render(): DocumentFragment {
     this.initChildren({
       link: new Link({
-        linkUrl: '#',
+        linkUrl: '/',
         linkText: 'Войти',
       }),
     });
