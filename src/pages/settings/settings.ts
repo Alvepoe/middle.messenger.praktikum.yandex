@@ -5,7 +5,6 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import Link from '../../components/link/link';
 import submitForm from '../../utils/submitForm';
-import renderDOM from '../../utils/renderDom';
 import { handleInputValidation } from '../../utils/validateInput';
 
 type TSettingsProps = {
@@ -123,13 +122,5 @@ class Settings extends Block<TSettingsProps> {
     });
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(
-    new Settings({
-      userFirstName: 'Лёша',
-    })
-  );
-});
 
 export default Settings;

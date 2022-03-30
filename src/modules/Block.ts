@@ -2,7 +2,7 @@ import { TemplateDelegate } from 'handlebars';
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from './EventBus';
 
-interface IProps {
+export interface IProps {
   [key: string | symbol]: unknown;
 }
 
@@ -208,6 +208,16 @@ class Block<Props extends IProps = {}> {
         this._element?.removeEventListener(eventName, this.events[eventName]);
       }
     });
+  }
+
+  show() {
+    const content = this.getContent();
+    (content as HTMLElement).style.display = 'block';
+  }
+
+  hide() {
+    const content = this.getContent();
+    (content as HTMLElement).style.display = 'none';
   }
 
   render() {

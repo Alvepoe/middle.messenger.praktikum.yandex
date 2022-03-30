@@ -2,7 +2,6 @@ import template from '../../components/error/error.hbs';
 import Block from '../../modules/Block';
 import Link from '../../components/link/link';
 import '../../components/error/error.scss';
-import renderDOM from '../../utils/renderDom';
 import { TErrorPage } from '../../components/error/error';
 
 class Error404 extends Block<TErrorPage> {
@@ -19,9 +18,5 @@ class Error404 extends Block<TErrorPage> {
     });
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(new Error404());
-});
 
 export default Error404;

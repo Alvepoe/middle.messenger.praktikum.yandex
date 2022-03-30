@@ -5,7 +5,6 @@ import Avatar from '../../components/avatar/avatar';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
-import renderDOM from '../../utils/renderDom';
 
 type TChangePasswordProps = {
   avatarSrc?: string;
@@ -73,13 +72,5 @@ class ChangePassword extends Block<TChangePasswordProps> {
     });
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(
-    new ChangePassword({
-      userFirstName: 'Лёша',
-    })
-  );
-});
 
 export default ChangePassword;

@@ -5,7 +5,6 @@ import ChatList from '../../components/chatList/chatList';
 import template from './messenger.hbs';
 import Chat from '../../layouts/chat/chat';
 import submitForm from '../../utils/submitForm';
-import renderDOM from '../../utils/renderDom';
 
 type TMessengerProps = {
   avatarSrc?: string;
@@ -64,8 +63,7 @@ class Messenger extends Block<TMessengerProps> {
               className: 'user',
             },
           ],
-          userName: this.props.userName,
-          avatarSrc: this.props.avatarSrc,
+          userName: 'Леша',
         },
         {
           submit: submitForm,
@@ -75,13 +73,5 @@ class Messenger extends Block<TMessengerProps> {
     return this.compile(template);
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(
-    new Messenger({
-      userName: 'Лёша',
-    })
-  );
-});
 
 export default Messenger;

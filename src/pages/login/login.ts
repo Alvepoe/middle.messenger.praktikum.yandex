@@ -3,7 +3,6 @@ import Block from '../../modules/Block';
 import Form from '../../components/form/form';
 import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
-import renderDOM from '../../utils/renderDom';
 
 class Login extends Block<{}> {
   render(): DocumentFragment {
@@ -59,9 +58,5 @@ class Login extends Block<{}> {
     return this.compile(template);
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderDOM(new Login());
-});
 
 export default Login;
