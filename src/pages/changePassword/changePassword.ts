@@ -15,7 +15,7 @@ class ChangePassword extends Block<TChangePasswordProps> {
   render(): DocumentFragment {
     this.initChildren({
       sidebarLink: new SidebarLink(),
-      avatar: new Avatar({ avatarSrc: this.props.avatarSrc }),
+      avatar: new Avatar({ avatarSrc: '' }),
       form: new Form(
         {
           profileFields: [
@@ -67,8 +67,8 @@ class ChangePassword extends Block<TChangePasswordProps> {
       ),
     });
     return this.compile(template, {
-      avatarSrc: this.props.avatarSrc,
-      userFirstName: this.props.userFirstName,
+      avatarSrc: '',
+      userFirstName: '',
     });
   }
 }

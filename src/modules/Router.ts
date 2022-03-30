@@ -46,6 +46,7 @@ class Router {
   _onRoute(pathname: string) {
     const route = this.getRoute(pathname);
     if (!route) {
+      window.location.assign('/404');
       return;
     }
 

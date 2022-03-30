@@ -16,7 +16,7 @@ class Settings extends Block<TSettingsProps> {
   render(): DocumentFragment {
     this.initChildren({
       sidebarLink: new SidebarLink(),
-      avatar: new Avatar({ avatarSrc: this.props.avatarSrc }),
+      avatar: new Avatar({ avatarSrc: '' }),
       form: new Form(
         {
           profileFields: [
@@ -117,8 +117,8 @@ class Settings extends Block<TSettingsProps> {
       ],
     });
     return this.compile(template, {
-      avatarSrc: this.props.avatarSrc,
-      userFirstName: this.props.userFirstName,
+      avatarSrc: '',
+      userFirstName: 'Лёша',
     });
   }
 }
