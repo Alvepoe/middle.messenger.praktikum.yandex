@@ -212,7 +212,7 @@ class Block<Props extends IProps = {}> {
 
   show() {
     const content = this.getContent();
-    (content as HTMLElement).style.display = 'flex';
+    (content as HTMLElement).style.display = '';
   }
 
   hide() {
