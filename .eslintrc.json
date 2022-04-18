@@ -12,6 +12,7 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "no-constructor-return": "off",
+    "@typescript-eslint/naming-convention": "warn",
     "no-param-reassign": [
       "error",
       {

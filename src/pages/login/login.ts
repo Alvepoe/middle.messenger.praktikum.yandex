@@ -1,10 +1,29 @@
 import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
-import submitForm from '../../utils/submitForm';
 import { handleInputValidation } from '../../utils/validateInput';
+import AuthController from '../../controller/AuthController';
+import { IUserSignInData } from '../../api/types';
 
 class Login extends Block<{}> {
+  private handleSubmit(event: Event) {
+    const authController = new AuthController();
+
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    const userData: IUserSignInData = {
+      login: '',
+      password: '',
+    };
+
+    Array.from(formData.entries()).forEach(([key, value]: [string, string]) => {
+      userData[key] = value;
+    });
+
+    return authController.signIn(userData);
+  }
+
   render(): DocumentFragment {
     this.initChildren({
       form: new Form(
@@ -51,7 +70,7 @@ class Login extends Block<{}> {
           ],
         },
         {
-          submit: submitForm,
+          submit: this.handleSubmit,
         }
       ),
     });

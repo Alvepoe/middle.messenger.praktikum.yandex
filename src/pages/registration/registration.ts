@@ -1,10 +1,35 @@
 import template from '../../layouts/auth/auth.hbs';
 import Block from '../../modules/Block';
 import Form from '../../components/form/form';
-import submitForm from '../../utils/submitForm';
+import AuthController, {
+  ISignUpFormData,
+} from '../../controller/AuthController';
 import { handleInputValidation } from '../../utils/validateInput';
 
 class Registration extends Block {
+  private handleSubmit(event: Event) {
+    const authController = new AuthController();
+
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    const userData: ISignUpFormData = {
+      email: '',
+      login: '',
+      first_name: '',
+      second_name: '',
+      phone: '',
+      password: '',
+      confirm_password: '',
+    };
+
+    Array.from(formData.entries()).forEach(([key, value]: [string, string]) => {
+      userData[key] = value;
+    });
+
+    return authController.signUp(userData);
+  }
+
   render(): DocumentFragment {
     this.initChildren({
       form: new Form(
@@ -58,7 +83,7 @@ class Registration extends Block {
                 type: 'text',
                 label: 'Фамилия',
                 placeholder: 'Фамилия',
-                name: 'last_name',
+                name: 'second_name',
               },
               events: {
                 focus: handleInputValidation,
@@ -94,7 +119,7 @@ class Registration extends Block {
                 type: 'password',
                 label: 'Пароль (ещё раз)',
                 placeholder: 'Пароль (ещё раз)',
-                name: 'password',
+                name: 'confirm_password',
               },
               events: {
                 focus: handleInputValidation,
@@ -111,7 +136,7 @@ class Registration extends Block {
           ],
         },
         {
-          submit: submitForm,
+          submit: this.handleSubmit,
         }
       ),
     });

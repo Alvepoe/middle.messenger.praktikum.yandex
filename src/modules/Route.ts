@@ -1,4 +1,4 @@
-import renderDOM from '../utils/renderDOM';
+import renderDOM from '../utils/renderDom';
 import Block from './Block';
 
 type TRouteType = {

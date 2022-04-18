@@ -1,7 +1,9 @@
-type TObject = { [key: string]: string };
+type TObject<T = unknown> = {
+  [key in string]: T;
+};
 
-type TOptions = {
-  data?: XMLHttpRequestBodyInit;
+export type TOptions = {
+  data?: TObject;
   timeout?: number;
   headers?: TObject;
   method?: string;
@@ -30,32 +32,34 @@ function queryStringify(data: any): string {
 }
 
 class HTTPTransport {
-  get = (url: string, options: TOptions) => {
-    return this.request(url, {
+  private baseUrl: string = 'https://ya-praktikum.tech/api/v2';
+
+  get = (url: string, options?: TOptions) => {
+    return this.request(`${this.baseUrl}${url}`, {
       ...options,
       method: METHODS.GET,
-      timeout: options.timeout,
+      timeout: options?.timeout,
     });
   };
 
   put = (url: string, options: TOptions = {}) => {
-    return this.request(url, {
+    return this.request(`${this.baseUrl}${url}`, {
       ...options,
       method: METHODS.PUT,
       timeout: options.timeout,
     });
   };
 
-  post = (url: string, options: TOptions = {}) => {
-    return this.request(url, {
+  post = (url: string, options?: TOptions) => {
+    return this.request(`${this.baseUrl}${url}`, {
       ...options,
       method: METHODS.POST,
-      timeout: options.timeout,
+      timeout: options?.timeout,
     });
   };
 
   delete = (url: string, options: TOptions = {}) => {
-    return this.request(url, {
+    return this.request(`${this.baseUrl}${url}`, {
       ...options,
       method: METHODS.DELETE,
       timeout: options.timeout,
@@ -69,24 +73,33 @@ class HTTPTransport {
     const { method = METHODS.GET, data, headers, timeout = 0 } = options;
     let requestString = url;
 
-    if (data) {
+    if (data && method === METHODS.GET) {
       const stringifiedData = queryStringify(data);
       requestString = `${url}${stringifiedData}`;
     }
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
+
       xhr.open(method, requestString);
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
+      xhr.withCredentials = true;
+      xhr.setRequestHeader('content-type', 'application/json');
 
       if (headers) {
         Object.keys(headers).forEach(headerKey => {
-          xhr.setRequestHeader(headerKey, headers[headerKey]);
+          xhr.setRequestHeader(headerKey, <string>headers[headerKey]);
         });
       }
+
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          resolve(xhr.response);
+        } else {
+          const errorText = JSON.parse(xhr.response).reason;
+          reject(new Error(errorText));
+        }
+      };
 
       xhr.timeout = timeout;
       xhr.onabort = reject;
@@ -96,7 +109,7 @@ class HTTPTransport {
       if (!data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   }
