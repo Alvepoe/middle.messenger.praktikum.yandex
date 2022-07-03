@@ -2,7 +2,7 @@ import template from './message.hbs';
 import './message.scss';
 import Block from '../../modules/Block';
 
-type TMessageProps = {
+export type TMessageProps = {
   className?: string;
   content: string;
   time: string;

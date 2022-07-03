@@ -4,21 +4,14 @@ import template from './chatList.hbs';
 import ChatPreview, { TChatPreviewProps } from '../chatPreview/chatPreview';
 
 type TChatListProps = {
-  chats: TChatPreviewProps[];
+  chats?: TChatPreviewProps[];
 };
 
 class ChatList extends Block<TChatListProps> {
   render(): DocumentFragment {
     this.initChildren({
-      chatPreviews: this.props.chats.map(
-        (chat: TChatPreviewProps) =>
-          new ChatPreview({
-            userAvatarSrc: chat.userAvatarSrc,
-            chatTitle: chat.chatTitle,
-            lastMessageTime: chat.lastMessageTime,
-            content: chat.content,
-            unreadCount: chat.unreadCount,
-          })
+      chatPreviews: this.props.chats?.map(
+        (chat: TChatPreviewProps) => new ChatPreview(chat)
       ),
     });
     return this.compile(template);

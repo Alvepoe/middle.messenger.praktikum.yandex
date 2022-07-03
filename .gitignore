@@ -1,9 +1,14 @@
 # build
 dist
 .parcel-cache
+.cache
 
 # dependencies
 node_modules
+yarn-error.log
 
 # idea
 .idea
+
+#vs-code
+.vscode

@@ -5,48 +5,27 @@ import ChatList from '../../components/chatList/chatList';
 import template from './messenger.hbs';
 import Chat from '../../layouts/chat/chat';
 import submitForm from '../../utils/submitForm';
+import ChatController from '../../controller/ChatController';
+import { TChatPreviewProps } from '../../components/chatPreview/chatPreview';
+import { connect } from '../../modules/Store/connect';
 
 type TMessengerProps = {
   avatarSrc?: string;
   userName: string;
+  chats?: TChatPreviewProps[];
 };
 
 class Messenger extends Block<TMessengerProps> {
+  private chatController = new ChatController();
+
+  componentDidMount() {
+    this.chatController.getChatsList();
+  }
+
   render(): DocumentFragment {
     this.initChildren({
       chatList: new ChatList({
-        chats: [
-          {
-            chatTitle: 'chatTitle',
-            lastMessageTime: '2020-01-02T14:22:22.000Z',
-            content: 'ща аннек расскажу',
-            unreadCount: 15,
-          },
-          {
-            chatTitle: 'chatTitle',
-            lastMessageTime: '2020-01-02T14:22:22.000Z',
-            content: 'ща аннек расскажу',
-            unreadCount: 15,
-          },
-          {
-            chatTitle: 'chatTitle',
-            lastMessageTime: '2020-01-02T14:22:22.000Z',
-            content: 'ща аннек расскажу',
-            unreadCount: 15,
-          },
-          {
-            chatTitle: 'chatTitle',
-            lastMessageTime: '2020-01-02T14:22:22.000Z',
-            content: 'ща аннек расскажу',
-            unreadCount: 15,
-          },
-          {
-            chatTitle: 'chatTitle',
-            lastMessageTime: '2020-01-02T14:22:22.000Z',
-            content: 'ща аннек расскажу',
-            unreadCount: 15,
-          },
-        ],
+        chats: this.props.chats,
       }),
       chat: new Chat(
         {
@@ -74,4 +53,6 @@ class Messenger extends Block<TMessengerProps> {
   }
 }
 
-export default Messenger;
+export default connect(state => ({ chats: state.chats }))(
+  Messenger as typeof Block
+);

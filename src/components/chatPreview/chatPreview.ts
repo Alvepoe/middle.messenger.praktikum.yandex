@@ -12,13 +12,7 @@ export type TChatPreviewProps = {
 
 class ChatPreview extends Block<TChatPreviewProps> {
   render(): DocumentFragment {
-    return this.compile(template, {
-      userAvatarSrc: this.props.userAvatarSrc,
-      chatTitle: this.props.chatTitle,
-      lastMessageTime: this.props.lastMessageTime,
-      content: this.props.content,
-      unreadCount: this.props.unreadCount,
-    });
+    return this.compile(template, this.props);
   }
 }
 

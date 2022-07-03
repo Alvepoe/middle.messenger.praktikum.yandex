@@ -87,6 +87,19 @@ class Block<Props extends IProps = {}> {
 
   _componentDidMount() {
     this.componentDidMount();
+    Object.values(this.children).forEach(child => {
+      if (child) {
+        if (Array.isArray(child)) {
+          child.forEach(innerChild => {
+            if (innerChild.dispatchComponentDidMount)
+              innerChild.dispatchComponentDidMount();
+          });
+        } else {
+          child.dispatchComponentDidMount();
+        }
+      }
+    });
+    this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   // Может переопределять пользователь, необязательно трогать
@@ -101,8 +114,8 @@ class Block<Props extends IProps = {}> {
     if (isUpdated) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
-    return oldProps !== newProps;
+  componentDidUpdate(_oldProps: Props, _newProps: Props): boolean {
+    return true;
   }
 
   _makePropsProxy(props: Props): Props {
@@ -121,10 +134,15 @@ class Block<Props extends IProps = {}> {
     });
   }
 
-  _render() {
-    this.removeEvents();
+  private _render() {
     const fragment = this.render();
-    this._element = fragment.firstElementChild;
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    if (this._element) {
+      this.removeEvents();
+      this._element.replaceWith(newElement);
+    }
+    this._element = newElement;
     this.addEvents();
   }
 
@@ -208,6 +226,15 @@ class Block<Props extends IProps = {}> {
         this._element?.removeEventListener(eventName, this.events[eventName]);
       }
     });
+  }
+
+  setProps(nextProps: IProps) {
+    if (!nextProps) {
+      return;
+    }
+
+    Object.assign(this.props, nextProps);
+    this.eventBus.emit(Block.EVENTS.FLOW_CDU, this.props, nextProps);
   }
 
   show() {

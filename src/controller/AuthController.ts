@@ -1,4 +1,5 @@
 import AuthAPI from '../api/auth/AuthAPI';
+import Store from '../modules/Store/Store';
 import { IUserSignInData, IUserSignUpData } from '../api/types';
 import Router from '../modules/Router';
 
@@ -10,6 +11,7 @@ export default class AuthController {
   private authApi = new AuthAPI();
 
   private router = new Router('');
+  private store = new Store();
 
   private checkPasswords = (password: string, confirmPassword: string) => {
     return password === confirmPassword;
@@ -19,7 +21,8 @@ export default class AuthController {
     this.authApi
       .signIn(userData)
       .then(() => {
-        this.authApi.getCurrentUser().then(() => {
+        this.authApi.getCurrentUser().then((resp: string) => {
+          this.store.set({ user: JSON.parse(resp) });
           this.router.go('/messenger');
         });
       })
@@ -36,7 +39,8 @@ export default class AuthController {
       this.authApi
         .signUp({ password, ...restData })
         .then(() => {
-          this.authApi.getCurrentUser().then(() => {
+          this.authApi.getCurrentUser().then((resp: string) => {
+            this.store.set({ user: JSON.parse(resp) });
             this.router.go('/messenger');
           });
         })

@@ -1,7 +1,7 @@
 export type TListeners = Record<string, CallableFunction[]>;
 
 class EventBus {
-  private readonly listeners: TListeners;
+  protected listeners: TListeners;
 
   constructor() {
     this.listeners = {};
@@ -25,7 +25,7 @@ class EventBus {
     );
   }
 
-  public emit(event: string, ...args: string[]) {
+  public emit(event: string, ...args: unknown[]) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

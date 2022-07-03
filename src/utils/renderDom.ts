@@ -4,7 +4,9 @@ const renderDOM = (block: Block | null) => {
   const root = document.querySelector('#root');
   if (root) {
     const content = <Node>block?.getContent();
+    debugger;
     root?.replaceChildren(content);
+    block?.dispatchComponentDidMount();
   }
 };
 
