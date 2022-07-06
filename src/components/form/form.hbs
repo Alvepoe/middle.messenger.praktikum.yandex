@@ -1,28 +1,24 @@
 <div>
-    <form
-            action=""
-            method="POST"
-            class="form"
-    >
-        <fieldset class="form__fieldset">
-            <legend class="form__legend">
-                {{legendText}}
-            </legend>
+  <form action='' method='POST' class='form'>
+    <fieldset class='form__fieldset'>
+      <legend class='form__legend'>
+        {{legendText}}
+      </legend>
 
-            {{#if fields}}
-                {{{fields}}}
-            {{/if}}
+      {{#if fields}}
+        {{{fields}}}
+      {{/if}}
 
-            {{#if profileFields}}
-                <ul class="profile__list">
-                    {{{profileFields}}}
-                </ul>
-            {{/if}}
+      {{#if profileFields}}
+        <ul class='profile__list'>
+          {{{profileFields}}}
+        </ul>
+      {{/if}}
 
-        </fieldset>
+    </fieldset>
 
-        {{{buttons}}}
+    {{{buttons}}}
 
-    </form>
-    {{{links}}}
+  </form>
+  {{{links}}}
 </div>

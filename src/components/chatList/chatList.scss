@@ -56,3 +56,15 @@
     }
   }
 }
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.chat-list__available-chats {
+  width: 100%;
+  margin-top: 10px;
+}

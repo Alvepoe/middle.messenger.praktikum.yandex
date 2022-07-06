@@ -1,6 +1,15 @@
 import ChatAPI from '../api/chat/ChatApi';
 import Store from '../modules/Store/Store';
 
+interface IChat {
+  title: string;
+  lastMessage?: {
+    time: string;
+    content: string;
+  };
+  unread_count: number;
+}
+
 export default class AuthController {
   private chatApi = new ChatAPI();
 
@@ -10,7 +19,7 @@ export default class AuthController {
     this.chatApi
       .getChats()
       .then((response: string) => {
-        const chats = JSON.parse(response).map(chat => {
+        const chats = JSON.parse(response).map((chat: IChat) => {
           return {
             chatTitle: chat.title,
             lastMessageTime: chat.lastMessage?.time,

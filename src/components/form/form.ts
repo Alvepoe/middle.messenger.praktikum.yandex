@@ -11,7 +11,7 @@ type TFormProps = {
   fields?: { props: TFieldProps; events?: TEvents }[];
   profileFields?: { props: TProfileFieldProps; events?: TEvents }[];
   links?: TLinkProps[];
-  buttons: TButtonProps[];
+  buttons?: TButtonProps[];
 };
 
 class Form extends Block<TFormProps> {
