@@ -11,6 +11,7 @@ export type TModalProps = {
   fields?: { props: TFieldProps; events?: TEvents }[];
   buttons?: TButtonProps[];
   isOpen?: boolean;
+  handleFormSubmit?: (event: Event) => void;
 };
 
 class Modal extends Block<TModalProps> {
@@ -26,10 +27,15 @@ class Modal extends Block<TModalProps> {
 
   render(): DocumentFragment {
     this.initChildren({
-      form: new Form({
-        fields: this.props.fields,
-        buttons: this.props.buttons,
-      }),
+      form: new Form(
+        {
+          fields: this.props.fields,
+          buttons: this.props.buttons,
+        },
+        {
+          submit: this.props.handleFormSubmit,
+        }
+      ),
       closeButton: new CloseButton(
         {},
         {

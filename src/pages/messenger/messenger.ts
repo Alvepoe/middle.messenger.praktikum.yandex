@@ -8,6 +8,7 @@ import submitForm from '../../utils/submitForm';
 import ChatController from '../../controller/ChatController';
 import { TChatPreviewProps } from '../../components/chatPreview/chatPreview';
 import { connect } from '../../modules/Store/connect';
+import { IChatData } from '../../api/types';
 
 type TMessengerProps = {
   avatarSrc?: string;
@@ -22,10 +23,28 @@ class Messenger extends Block<TMessengerProps> {
     this.chatController.getChatsList();
   }
 
+  handleCreateChat(event: Event) {
+    const chatController = new ChatController();
+
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    const fieldsData: IChatData = {
+      title: '',
+    };
+
+    Array.from(formData.entries()).forEach(([key, value]: [string, string]) => {
+      fieldsData[key] = value;
+    });
+
+    return chatController.createChat(fieldsData);
+  }
+
   render(): DocumentFragment {
     this.initChildren({
       chatList: new ChatList({
         chats: this.props.chats,
+        handleCreateChat: this.handleCreateChat,
       }),
       chat: new Chat(
         {

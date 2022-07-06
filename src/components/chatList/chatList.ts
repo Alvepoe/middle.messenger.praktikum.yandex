@@ -7,12 +7,14 @@ import Modal from '../modal/modal';
 
 type TChatListProps = {
   chats?: TChatPreviewProps[];
+  handleCreateChat?: (event: Event) => void;
 };
 
 class ChatList extends Block<TChatListProps> {
   render(): DocumentFragment {
     const modal = new Modal({
       title: 'Введите название чата',
+      handleFormSubmit: this.props.handleCreateChat,
       fields: [
         {
           props: {

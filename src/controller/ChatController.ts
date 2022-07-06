@@ -1,4 +1,5 @@
 import ChatAPI from '../api/chat/ChatApi';
+import { IChatData } from '../api/types';
 import Store from '../modules/Store/Store';
 
 interface IChat {
@@ -30,6 +31,17 @@ export default class AuthController {
         this.store.set({
           chats,
         });
+      })
+      .catch(error => {
+        alert(error);
+      });
+  }
+
+  public createChat(chatData: IChatData) {
+    this.chatApi
+      .createChat(chatData)
+      .then(() => {
+        this.getChatsList();
       })
       .catch(error => {
         alert(error);

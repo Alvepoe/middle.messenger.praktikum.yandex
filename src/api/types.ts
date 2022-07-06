@@ -13,3 +13,8 @@ export interface IUserSignInData {
   login: string;
   password: string;
 }
+
+export interface IChatData {
+  [k: string]: string;
+  title: string;
+}
