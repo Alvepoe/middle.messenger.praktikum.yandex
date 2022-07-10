@@ -1,8 +1,6 @@
-import ChatAPI from '../api/chat/ChatApi';
+import ChatAPI from '../api/chats/ChatsAPI';
 import { IChatData } from '../api/types';
 import Store from '../modules/Store/Store';
-
-//comment
 
 interface IChat {
   title: string;

@@ -2,7 +2,7 @@ import BaseAPI from '../BaseApi';
 import HTTPTransport from '../../modules/HTTPTransport';
 import { IChatData } from '../types';
 
-export default class ChatAPI extends BaseAPI {
+export default class ChatsAPI extends BaseAPI {
   private http = new HTTPTransport();
 
   public getChats() {
