@@ -4,6 +4,7 @@ import Form from '../../components/form/form';
 import { handleInputValidation } from '../../utils/validateInput';
 import AuthController from '../../controller/AuthController';
 import { IUserSignInData } from '../../api/types';
+import { connect } from '../../modules/Store/connect';
 
 class Login extends Block<{}> {
   private handleSubmit(event: Event) {
@@ -78,4 +79,4 @@ class Login extends Block<{}> {
   }
 }
 
-export default Login;
+export default connect(state => ({ user: state.user }))(Login as typeof Block);

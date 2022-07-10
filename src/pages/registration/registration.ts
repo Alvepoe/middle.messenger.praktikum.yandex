@@ -5,6 +5,7 @@ import AuthController, {
   ISignUpFormData,
 } from '../../controller/AuthController';
 import { handleInputValidation } from '../../utils/validateInput';
+import { connect } from '../../modules/Store/connect';
 
 class Registration extends Block {
   private handleSubmit(event: Event) {
@@ -144,4 +145,6 @@ class Registration extends Block {
   }
 }
 
-export default Registration;
+export default connect(state => ({ chats: state.chats }))(
+  Registration as typeof Block
+);
