@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+.menu__container {
+  position: relative;
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.menu__list {
+  position: absolute;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  background-color: $white;
+  right: 0;
+  border-radius: 12px;
+}

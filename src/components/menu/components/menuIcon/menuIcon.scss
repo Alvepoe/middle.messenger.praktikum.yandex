@@ -1,0 +1,29 @@
+@import 'src/styles/variables';
+
+.menu-dots {
+  top: 5px;
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background-color: black;
+  box-shadow: 0 5px 0 black, 0 10px 0 black;
+}
+
+.menu-icon {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  &:hover {
+    background-color: $lightGray;
+
+    .menu-dots {
+      background-color: $primaryColor;
+      box-shadow: 0 5px 0 $primaryColor, 0 10px 0 $primaryColor;
+    }
+  }
+}
